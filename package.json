@@ -1,5 +1,5 @@
 {
-  "name":"newproject",
+  "name":"Skookum Labs Site",
   "version":"0.0.1",
   "dependencies":{
     "jade":">=0.13.0",
