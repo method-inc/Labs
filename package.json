@@ -1,5 +1,5 @@
 {
-  "name":"Skookum Labs Site",
+  "name":"Skookum_Labs_Site",
   "version":"0.0.1",
   "dependencies":{
     "jade":">=0.13.0",
