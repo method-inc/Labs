@@ -179,10 +179,10 @@
 				}
 				if ($(this).attr("name") === "bg") {
 					if($(this).val() === "1") {
-						$("body").addClass("flat");
+						$("#demo_container").addClass("flat");
 					}
 					else {
-						$("body").removeClass("flat");
+						$("#demo_container").removeClass("flat");
 					}
 				}
 				else if ($(this).attr("name") === "ballcount") {

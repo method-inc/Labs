@@ -1,17 +1,8 @@
-html {
-  height: 100%;
-}
-body {
-  background: #000;
-  overflow: hidden;
-  height: 100%;
-  font-family: sans-serif;
-}
-body.flat {
+#demo_container.flat {
   background: #000 url(http://www.sevenforums.com/attachments/general-discussion/18348d1247628786-default-windows-desktop-background-wth-snow_leopard_server_wallpaper_by_subuddha.jpg) top left no-repeat;        		
 }
 #demo {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   background: transparent;

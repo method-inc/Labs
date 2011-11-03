@@ -14,9 +14,17 @@ exports = module.exports = {
 
   // canvastest actions
   'canvastest' : {
-    
+
     index: function(req, res, next) {
       res.render('canvastest/index');
+    }
+  },
+
+  // canvastest actions
+  'skookball' : {
+    
+    index: function(req, res, next) {
+      res.render('skookball/index');
     }
   }
 

@@ -1,0 +1,12 @@
+#arena {
+  position: relative;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+#fps {
+  position: absolute;
+  color: #ff0;
+  top: 10px;
+  left: 10px;
+}
