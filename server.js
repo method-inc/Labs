@@ -1,11 +1,10 @@
 var options = {
-  port: 80,
+  port: 3000,
   watched_files: undefined,
   default_start_type: 'simple'
 };
 
-var cluster = require('cluster'),
-    port    = 80;
+var cluster = require('cluster');
 
 var start = {
   normal: function() {
