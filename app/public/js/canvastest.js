@@ -1,186 +1,25 @@
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Skookum practical canvas test <!-- codename hunter's balls --></title>
-        <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css" />
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-332390-1']);
-  _gaq.push(['_setDomainName', '.skookum.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
-        <style type="text/css">
-        	html {
-        		height: 100%;
-        	}
-        	body {
-        		background: #000;        	
-        		overflow: hidden;
-        		height: 100%;
-        		font-family: sans-serif;        		
-        	}
-        	body.flat {
-				background: #000 url(http://www.sevenforums.com/attachments/general-discussion/18348d1247628786-default-windows-desktop-background-wth-snow_leopard_server_wallpaper_by_subuddha.jpg) top left no-repeat;        		
-        	}
-        	#demo {
-        		position: absolute;
-        		top: 0;
-				left: 0;
-        		background: transparent;
-        	}
-        	#demo.stretched {
-        		width: 100%;
-        		height: 100%;
-        	}
-        	#fps {
-        		color: #ff0;
-        		padding: 10px 0 10px 0;
-        		font-size: 110%;
-        		font-weight: bold;
-        	}
-        	#controls {
-        		position: absolute;
-        		top: 10px;
-        		left: 10px;
-        		bottom: 10px;
-        		padding: 20px;
-        		border: solid 1px #fff;
-        		color: #fff;
-        		font-size: 90%;
-        		overflow-y: auto;
-        	}
-        	#controls label {
-        		display: block;
-        		padding: 3px;
-        	}
-        	#controls h1 {
-        		font-size: 110%;
-        		font-weight: bold;
-        		padding-top: 20px;
-        	}
-        	#controls a {
-        		display: block;
-        		color: #f90;
-        		padding-top: 20px;
-        		font-size: 90%;
-        	}
-        </style>
-    </head>
-	<body>
+;(function() {
+	var full_circle = Math.PI * 2;
 	
-	<canvas id="demo"></canvas>
-	<div id="controls">
-		<div id="fps"></div>	
-		<form>
+	window.cUtil = {
+		circle: function(ctx, x, y, r) {
+			ctx.beginPath();
+			ctx.arc(x, y, r, 0, full_circle, true);
+			ctx.closePath();
+		}
+		, fullscreen: function(canvas, callback) {
+			window.onresize = function() {
+				canvas.width = window.innerWidth || document.documentElement.clientWidth;
+				canvas.height = document.documentElement.clientHeight;
+				callback && callback();
+			}
+			window.onresize();
+		}
+	};
+})();
 
-			<h1>Clear method:</h1>
-			<label>clearRect on canvas
-				<input type="radio" name="clear" value="0" checked="checked" />
-			</label>
-			<label>width = width
-				<input type="radio" name="clear" value="1" />
-			</label>
-			<label>
-				clearRect on sprites
-				<input type="radio" name="clear" value="2" />
-			</label>
 
-			<h1>Chrome width=width fix:</h1>
-			<label>off
-				<input type="radio" name="chromefix" value="0" checked="checked" />
-			</label>
-			<label>on
-				<input type="radio" name="chromefix" value="1" />
-			</label>
-
-			<h1>Background:</h1>
-			<label>color
-				<input type="radio" name="bg" value="0" checked="checked" />
-			</label>
-			<label>image
-				<input type="radio" name="bg" value="1" />
-			</label>
-
-			<h1>Sprite count:</h1>
-			<label>low (20)
-				<input type="radio" name="ballcount" value="20" />
-			</label>
-			<label>medium (50)
-				<input type="radio" name="ballcount" value="50" checked="checked" />
-			</label>
-			<label>high (250)
-				<input type="radio" name="ballcount" value="250" />
-			</label>
-			<label>insane (1000)
-				<input type="radio" name="ballcount" value="1000" />
-			</label>
-			
-			<h1>Force integers (~~):</h1>
-			<label>off
-				<input type="radio" name="integers" value="0" checked="checked" />
-			</label>
-			<label>on
-				<input type="radio" name="integers" value="1" />
-			</label>
-			
-			<h1>Canvas scaling:</h1>
-			<label>canvas pixels
-				<input type="radio" name="scaling" value="0" checked="checked" />
-			</label>
-			<label>css pixels
-				<input type="radio" name="scaling" value="1" />
-			</label>
-			
-			<h1>Fillstyle:</h1>
-			<label>rgba alpha .33
-				<input type="radio" name="fillstyle" value="0" />
-			</label>
-			<label>solid
-				<input type="radio" name="fillstyle" value="1" checked="checked" />
-			</label>			
-
-			<h1>Rotation:</h1>
-			<label>automatic
-				<input type="radio" name="rotation" value="0" checked="checked" />
-			</label>
-			<label>mouse X
-				<input type="radio" name="rotation" value="1" />
-			</label>
-
-			<h1>Scale transform:</h1>
-			<label>locked
-				<input type="radio" name="scaletransform" value="0" checked="checked" />
-			</label>
-			<label>mouse Y
-				<input type="radio" name="scaletransform" value="1" />
-			</label>
-			
-			<a href="mailto:hunter@skookum.com">Hunter@Skookum.com</a>
-		</form>
-	</div>
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	
-	<script type="text/javascript" src="canvas_util.js"></script>
-	
-	<script type="text/javascript">
-		
-	;(function(cUtil) {
+;(function(cUtil) {
 	
 		function Box(w, h, a) {
 			this.w = w;
@@ -451,9 +290,4 @@
 
 	
 	})(cUtil);
-		
-	</script>
 	
-	</body>
-</html>
-
