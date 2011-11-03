@@ -3,9 +3,14 @@ var home = require('../controllers/home'),
 
 exports = module.exports = function(server) {
 
-  server.all('/demos/:section/:id', labs.section );
-  server.all('/demos/:section', labs.index);
-  server.all('/:section/:id', labs.section );
-  server.all('/:section', labs.index);
+
+  //canvas test
+  server.all('/demos/canvastest', labs.canvastest.index);
+
+  // barcamp physic presentation
+  server.all('/demos/barcampclt_physics/:id', labs.barcampclt_physics.section );
+  server.all('/demos/barcampclt_physics', labs.barcampclt_physics.index);
+
+  // labs home
   server.all('/', home.index);
 };
