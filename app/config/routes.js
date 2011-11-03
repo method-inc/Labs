@@ -14,9 +14,13 @@ exports = module.exports = function(server) {
   server.all('/demos/barcampclt_physics/complex/canvastest/index.html', labs.canvastest.index);
 
   // barcamp physic presentation
-  server.all('/demos/barcampclt_physics/:id', labs.barcampclt_physics.section );
+  server.all('/demos/barcampclt_physics/:section/:id', labs.barcampclt_physics.section );
   server.all('/demos/barcampclt_physics', labs.barcampclt_physics.index);
 
   // labs home
   server.all('/', home.index);
 };
+
+
+// server.all('/labs/:section/:id', labs.section );
+//   server.all('/labs', labs.index);
