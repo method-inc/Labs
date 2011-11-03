@@ -1,8 +1,4 @@
-
 ul
-  li 
-    a(href="http://173.230.134.69:3100") Dueling Pianos
-  li 
-    a(href="http://173.230.134.69:3200") HTML5 Fish Aquarium
-  li
-    a(href='barcampclt_physics') BarcampCLT Physics
+  each project in projects
+    li 
+      a(href=project.link)= project.name

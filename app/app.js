@@ -67,6 +67,10 @@ exports = module.exports = (function() {
     require('./config/routes')(server);
 
   });
+
+  // initialize models
+
+  require('./models/projects').init(server);
   
   // Config (development)
   
