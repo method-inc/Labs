@@ -6,6 +6,7 @@ var root = require('path').normalize(__dirname + '/..');
 
 var express = require('express'),
     connectTimeout = require('connect-timeout'),
+    connectRedis    = require('connect-redis')(require('connect')),
     stylus = require('stylus');
 
 // Server export
@@ -49,9 +50,10 @@ exports = module.exports = (function() {
     server.use(express.session({
       secret: 'sk00kum_l@bs',
       key: options.sessionKey,
-      store: new express.session.MemoryStore({
-        reapInterval: options.reapInterval,
-        maxAge: options.maxAge
+      store: new connectRedis({
+        maxAge: options.maxAge,
+        host: options.redis.host,
+        port: options.redis.port
       })
     }));
     server.use(express.bodyParser());

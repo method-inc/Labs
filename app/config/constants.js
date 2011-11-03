@@ -15,7 +15,7 @@ exports = module.exports = function(env) {
       this.dumpExceptions = true;
       this.showStack = true;
       this.errorToHtml = true;
-      //this.redis = { host: 'localhost', port: 6379, db: 'clickdummy' }
+      this.redis = { host: 'localhost', port: 6379, db: 'labs' };
       //this.mongo = { db: 'mongodb://localhost/passport'}
       //this.mysql = { host: 'localhost', port: 3306, user: 'root', password: 'root', database: 'clickdummy' }
     },
