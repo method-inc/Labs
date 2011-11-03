@@ -4,10 +4,11 @@ html
     meta(charset="utf-8")
     title Skookum Labs
     link(rel='stylesheet', href='/styles/layout.css' )
-
+    meta(name='viewport', content='width=device-width; initial-scale=1; maximum-scale=1; user-scalable=1;')
   body
     div.notice We're hiring! 
       a(href='http://skookum.com/jobs/') Join us
     h1#logo
-      a(href='/') Skookum Labs
+      a(href='/')
+        img(src='/images/skookum.png', alt='Skookum Labs')
     != body
