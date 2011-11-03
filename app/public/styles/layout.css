@@ -341,6 +341,10 @@ td {
     page-break-after: avoid;
   }
 }
+img,
+canvas {
+  max-width: 100%;
+}
 html {
   background: #ddd url("images/labs_bg.png");
 }
