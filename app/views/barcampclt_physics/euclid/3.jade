@@ -1,0 +1,115 @@
+ul#menu
+  li
+    a(href='../') Index
+  li
+    a(href='3') Previous
+canvas#surface(width='600', height='400')
+script
+  // Version 1: Rotation - X,Y known, need angle
+
+  var line = {
+    x: 300,
+    y: 200,
+    length: 50,
+    angle: 0
+  };
+
+  function Ball(x, y, r) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    this.vx = 0;
+    this.vy = 0;
+    Ball.all.push(this);
+  }
+  Ball.all = [];
+  Ball.draw_all = function() {
+    var i = Ball.all.length;
+    while (i--) {
+      Ball.all[i].draw();
+    }
+  };
+  Ball.prototype = {
+    draw: function() {
+      ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillStyle = "#fb0";
+        ctx.beginPath();
+        ctx.arc(0, 0, this.r, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
+      ctx.restore();
+    },
+    remove: function() {
+      Ball.all.splice(Ball.all.indexOf(this), 1);
+    }
+  };
+
+
+  var canvas = document.getElementById("surface");
+  var ctx = canvas.getContext('2d');
+
+  setInterval(function() {
+
+    // Clear display
+    ctx.save();
+      ctx.fillStyle = "rgba(0, 0, 0, .2)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+
+    // Update angle - with geometry! =)
+
+    line.angle += (Math.PI * 2) / 300;
+    var x = line.x + line.length * Math.cos(line.angle);
+    var y = line.y + line.length * Math.sin(line.angle);
+
+
+    // Update balls - with physics! =)
+
+    if (Ball.all.length < 200) {
+      for (var i = 0; i < 5; i++) {
+        var ball = new Ball(x, y, 2);
+        var random_offset = Math.random() * 1 - .5;
+        var speed = Math.random() * 15 + 3;
+        ball.vx = speed * Math.cos(line.angle + random_offset);
+        ball.vy = speed * Math.sin(line.angle + random_offset);
+      }
+    }
+
+    var i = Ball.all.length;
+    while(i--) {
+      var ball = Ball.all[i];
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+      ball.vy += .1;
+      ball.vx *= .999;
+      ball.vy *= .99;
+      if (ball.x % canvas.width !== ball.x) {
+        ball.remove();
+      }
+      else if (ball.y >= canvas.height) {
+        ball.vy = -Math.abs(ball.vy);
+        ball.vy *= .7;
+        if (Math.abs(ball.vy) < 1 && Math.abs(ball.vx) < 1) {
+          ball.remove();
+        }
+      }
+    }
+
+
+
+    // Draw line
+    ctx.save();
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(line.x, line.y);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    ctx.restore();
+
+    // Draw balls
+    Ball.draw_all();
+
+  }, 1000 / 77);
+
