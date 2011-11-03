@@ -1,5 +1,5 @@
 var options = {
-  port: 3000,
+  port: 80,
   watched_files: undefined,
   default_start_type: 'simple'
 };
