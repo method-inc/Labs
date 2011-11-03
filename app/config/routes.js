@@ -3,7 +3,7 @@ var home = require('../controllers/home')
 
 exports = module.exports = function(server) {
 
-  server.all('/labs/:section/:id', labs.section );
-  server.all('/labs', labs.index);
+  server.all('/:section/:id', labs.section );
+  server.all('/:section', labs.index);
   server.all('/', home.index);
 }
