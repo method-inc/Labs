@@ -1,0 +1,8 @@
+node_modules
+pids/*.pid
+logs/*.log
+logs/archive/*.log
+nohup.out
+.monitor
+npm-debug.log
+.DS_Store
