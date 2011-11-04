@@ -11,12 +11,14 @@ html
       img#background-mid(src="/images/midground.png", data-xrange="18", data-yrange="0")
       img#background-front(src="/images/foreground.png", data-xrange="40", data-yrange="0")
     div#main
-      div.notice We're hiring! 
-        a(href='http://skookum.com/jobs/') Join us
-      h1#logo
-        a(href='/')
-          img(src='/images/skookum.png', alt='Skookum Labs')
-      != body
+      header
+        h1#logo
+          a(href='/')
+            img(src='/images/logo.png', alt='Skookum Labs')
+      section#primary
+        div.notice We're hiring! 
+          a(href='http://skookum.com/jobs/') Join us
+        != body
     script(src="/js/lib/jquery-1.6.2.min.js")
     script(src="/js/lib/plax.js")
     script(src="/js/labs.js")

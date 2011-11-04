@@ -348,6 +348,9 @@ canvas {
 html {
   background: #e2e5e1;
 }
+body {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
 #background-container {
   position: fixed;
   left: 0;
@@ -375,12 +378,27 @@ html {
 #main {
   z-index: 2;
   width: 90%;
+  max-width: 1024px;
   margin: 1em auto;
-  background-color: rgba(255,255,255,0.50);
-  border: 1px solid #999;
-  border-radius: 5px;
-  padding: 2.5%;
   position: relative;
+}
+#main > header {
+  margin-bottom: 2.5%;
+}
+#main > header,
+#main #primary,
+#main #secondary {
+  background: rgba(45,51,42,0.95);
+  padding: 2.5%;
+  border-radius: 8px;
+  color: #fff;
+}
+a,
+a:visited {
+  color: #fff;
+}
+#logo {
+  margin: 0;
 }
 #logo img {
   max-width: 100%;
@@ -388,6 +406,7 @@ html {
 }
 .notice {
   background: #f7f4ba;
+  color: #2d332a;
   border-radius: 3px;
   border: 1px solid #ddd588;
   font-weight: bold;
@@ -395,6 +414,10 @@ html {
   padding: 0.375em 0.75em;
   text-align: center;
   width: 50%;
+}
+.notice a,
+.notice a:visited {
+  color: #2d332a;
 }
 #demo_container {
   margin: 10px auto;
