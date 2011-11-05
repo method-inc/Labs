@@ -1,4 +1,6 @@
-ul
+ul.projectlist
   each project in projects
-    li 
-      a(href=project.link)= project.name
+    li
+      a(href=project.link)
+        img.screenthumb(src='/images/screenshots/'+project.screenshot) 
+        span!= project.name

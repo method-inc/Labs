@@ -9,6 +9,7 @@ var cluster = require('cluster');
 var start = {
   normal: function() {
     cluster('./app/app')
+      .set('workers', 1)
       .use(cluster.debug())
       .use(cluster.reload())
       .use(cluster.logger('logs', 'debug'))
