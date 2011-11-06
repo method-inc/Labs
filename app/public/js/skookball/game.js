@@ -1,5 +1,8 @@
-;(function(cUtil) {
-    
+
+(function(cUtil) {
+  
+  var turn_speed = (moveable()) ? 0.005 : 0.015 ;
+
   // Constructor functions & prototypes
       
   function Player(id, name, x, y, a) {
@@ -64,11 +67,11 @@
       ctx.strokeWidth = 5;
     }
     cUtil.circle(ctx, 0, 0, this.r);
-    ctx.fill()
+    ctx.fill();
     ctx.stroke();
     ctx.fillStyle = "#ff0";
-    ctx.fillRect(this.r * .1, -this.r * .2, this.r * 1, this.r * .4); 
-    ctx.rotate(-this.a + view.a + Math.PI * .5);
+    ctx.fillRect(this.r * 0.1, -this.r * 0.2, this.r * 1, this.r * 0.4); 
+    ctx.rotate(-this.a + view.a + Math.PI * 0.5);
     ctx.translate(0, this.r + 20);      
     ctx.scale(1/view.z, 1/view.z);
     ctx.textAlign = "center";
@@ -81,7 +84,7 @@
     ctx.translate(this.x, this.y);
     //ctx.rotate(this.a);
     ctx.fillStyle = "#000";
-    ctx.rotate(view.a + Math.PI * .5);          
+    ctx.rotate(view.a + Math.PI * 0.5);          
     ctx.fillRect(-this.r - 3, -this.r - 3, this.r * 2 + 6, this.r * 2 + 6);
     ctx.translate(0, this.r + 20);      
     ctx.scale(1/view.z, 1/view.z);
@@ -90,29 +93,29 @@
   };
   Player.prototype._check_bounds = function() {
     // Check boundaries
-    if (this.x > level.width * .5) {
-      this.x = level.width * .5;
+    if (this.x > level.width * 0.5) {
+      this.x = level.width * 0.5;
       this.vx = -Math.abs(this.vx) * level.wall_bounce;
     }
-    else if (this.x < level.width * -.5) {
-      this.x = level.width * -.5;
+    else if (this.x < level.width * -0.5) {
+      this.x = level.width * -0.5;
       this.vx = Math.abs(this.vx) * level.wall_bounce;
     }
-    if (this.y > level.height * .5) {
-      this.y = level.height * .5;
+    if (this.y > level.height * 0.5) {
+      this.y = level.height * 0.5;
       this.vy = -Math.abs(this.vy) * level.wall_bounce;
     }
-    else if (this.y < level.height * -.5) {
-      this.y = level.height * -.5;
+    else if (this.y < level.height * -0.5) {
+      this.y = level.height * -0.5;
       this.vy = Math.abs(this.vy) * level.wall_bounce;
     }   
   };
   Player.prototype.update = function(slice) {
     if (this.turn_right) {
-      this.a += Math.PI * .02 * slice;
+      this.a += Math.PI * turn_speed * slice;
     }
     if (this.turn_left) {
-      this.a -= Math.PI * .02 * slice;
+      this.a -= Math.PI * turn_speed * slice;
     }
     if (this.impulse) {
       this.vx += this.impulse_power * Math.cos(this.a);
@@ -120,19 +123,19 @@
       this.impulse = false;
     }     
     else if (this.thrust) {
-      this.vx += .2 * Math.cos(this.a) * slice;
-      this.vy += .2 * Math.sin(this.a) * slice;
+      this.vx += 0.2 * Math.cos(this.a) * slice;
+      this.vy += 0.2 * Math.sin(this.a) * slice;
     }
     else if (this.brake) {
-      this.vx -= .07 * Math.cos(this.a) * slice;
-      this.vy -= .07 * Math.sin(this.a) * slice;
+      this.vx -= 0.07 * Math.cos(this.a) * slice;
+      this.vy -= 0.07 * Math.sin(this.a) * slice;
     }
     this.x += this.vx;
     this.y += this.vy;
     
     // Friction / drag
-    this.vx *= (1 - (.01 * slice));
-    this.vy *= (1 - (.01 * slice));
+    this.vx *= (1 - (0.01 * slice));
+    this.vy *= (1 - (0.01 * slice));
     
     this._check_bounds();
           
@@ -198,6 +201,35 @@
           break;
         }
       });
+
+    $("#arena").click(function() {
+      player.blast();
+    });
+
+    if (moveable) {
+      window.addEventListener("devicemotion", function(e) {
+        
+        var xsensitivity = 0.75;
+        var ysensitivity = 0.5;
+         
+        var accel= e.accelerationIncludingGravity,
+            x = accel.x,
+            y = accel.y;
+        if (x < -xsensitivity) player.turn_left = true;
+        else if (x > xsensitivity) player.turn_right = true;
+        else {
+          player.turn_left = false;
+          player.turn_right = false;
+        }
+        if (y < -ysensitivity) player.brake = true;
+        else if (y > ysensitivity) player.thrust = true;
+        else {
+          player.brake = false;
+          player.thrust = false;
+        }
+
+      }, true);
+    }
   }
   
   function Game() {
@@ -249,12 +281,12 @@
   }
   View.prototype.hard_clear = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
+  };
   View.prototype.update_size = function(size) {
     var max_zoom = this.tight_constant * (size / this.model_viewport);
     this.tight_z = this.z = max_zoom;
-    this.wide_z = this.tight_z * .4;
-  }
+    this.wide_z = this.tight_z * 0.4;
+  };
   View.prototype._push_matrix = function() {
     ctx.save();
     ctx.translate(canvas.width * this.ox, canvas.height * this.oy);
@@ -307,8 +339,8 @@
   };
   View.prototype.update = function(slice) {
     var t = this.target;
-    this.x += (t.x - this.x) * this.k * .75 * slice;
-    this.y += (t.y - this.y) * this.k * .75 * slice;
+    this.x += (t.x - this.x) * this.k * 0.75 * slice;
+    this.y += (t.y - this.y) * this.k * 0.75 * slice;
     this.a += (t.a - this.a) * this.k * slice;
     var normalized_speed = Math.sqrt(t.vx * t.vx + t.vy * t.vy) / (20);
     var target_z = Math.max(this.wide_z, this.tight_z - normalized_speed);
@@ -344,17 +376,17 @@
     this.width = w;
     this.height = h;
     this.points = [];
-    this.wall_bounce = .2;
+    this.wall_bounce = 0.2;
     this.marker_size = 5;     
     this._build_points();
   }
   Level.prototype._build_points = function() {
-    this._drawLine(-this.width * .5, -this.height * .5, this.width * .5, -this.height * .5, 5, 16);
-    this._drawLine(-this.width * .5, -this.height * .5, -this.width * .5, this.height * .5, 5, 8);
-    this._drawLine(-this.width * .5, this.height * .5, this.width * .5, this.height * .5, 5, 16);
-    this._drawLine(this.width * .5, -this.height * .5, this.width * .5, this.height * .5, 5, 8);      
-    this._drawLine(-this.width * .4, 0, this.width * .4, 0, 5, 16);         
-  }
+    this._drawLine(-this.width * 0.5, -this.height * 0.5, this.width * 0.5, -this.height * 0.5, 5, 16);
+    this._drawLine(-this.width * 0.5, -this.height * 0.5, -this.width * 0.5, this.height * 0.5, 5, 8);
+    this._drawLine(-this.width * 0.5, this.height * 0.5, this.width * 0.5, this.height * 0.5, 5, 16);
+    this._drawLine(this.width * 0.5, -this.height * 0.5, this.width * 0.5, this.height * 0.5, 5, 8);      
+    this._drawLine(-this.width * 0.4, 0, this.width * 0.4, 0, 5, 16);         
+  };
   Level.prototype._drawLine = function(x1, y1, x2, y2, size, count) {
     var x = x1, y = y1,
       dx = (x2 - x1) / count,
@@ -407,7 +439,7 @@
     this.r = r;   // radius
     this.vx = 0;
     this.vy = 0;
-    this.drag = .005;
+    this.drag = 0.005;
     this.cutoff = this.r * 10;  // cutoff distance for player gravity fields
     this.owner = null;
     this.candidates = [];
@@ -416,7 +448,7 @@
   Ball.prototype.drop = function() {
     this.owner.ball = null;
     this.owner = null;
-  }
+  };
   Ball.prototype.draw = function() {
     ctx.save();
       ctx.translate(this.x, this.y);
@@ -436,21 +468,21 @@
   };
   Ball.prototype._check_bounds = function() {
     // Check boundaries
-    if (this.x > level.width * .5) {
-      this.x = level.width * .5;
-      this.vx = -Math.abs(this.vx) * .75;
+    if (this.x > level.width * 0.5) {
+      this.x = level.width * 0.5;
+      this.vx = -Math.abs(this.vx) * 0.75;
     }
-    else if (this.x < level.width * -.5) {
-      this.x = level.width * -.5;
-      this.vx = Math.abs(this.vx) * .75;
+    else if (this.x < level.width * -0.5) {
+      this.x = level.width * -0.5;
+      this.vx = Math.abs(this.vx) * 0.75;
     }
-    if (this.y > level.height * .5) {
-      this.y = level.height * .5;
-      this.vy = -Math.abs(this.vy) * .75;
+    if (this.y > level.height * 0.5) {
+      this.y = level.height * 0.5;
+      this.vy = -Math.abs(this.vy) * 0.75;
     }
-    else if (this.y < level.height * -.5) {
-      this.y = level.height * -.5;
-      this.vy = Math.abs(this.vy) * .75;
+    else if (this.y < level.height * -0.5) {
+      this.y = level.height * -0.5;
+      this.vy = Math.abs(this.vy) * 0.75;
     }   
   };
   Ball.prototype.add_candidate = function(Player, distance) {
@@ -460,8 +492,8 @@
     if (new_owner.ball === null) {
       this.owner = new_owner;
       new_owner.ball = this;
-      new_owner.vx += this.vx * .3;
-      new_owner.vy += this.vy * .3;   
+      new_owner.vx += this.vx * 0.3;
+      new_owner.vy += this.vy * 0.3;   
     }
   };
   Ball.prototype.update = function(slice) {
@@ -487,13 +519,13 @@
           this.pickup(best.Player);
         }
         else if (best.d < this.cutoff) {
-          this.vx = this.vx * .99 + (best.Player.x - this.x) * best.Player.gravity * .01;
-          this.vy = this.vy * .99 + (best.Player.y - this.y) * best.Player.gravity * .01;
+          this.vx = this.vx * 0.99 + (best.Player.x - this.x) * best.Player.gravity * 0.01;
+          this.vy = this.vy * 0.99 + (best.Player.y - this.y) * best.Player.gravity * 0.01;
         }               
       }
       var speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
       if (speed > 10 * slice && this.last_ripple < fps.last_tick) {
-        new Boom(this.x, this.y, speed * .5, .5, "255, 255, 255", 100); 
+        new Boom(this.x, this.y, speed * 0.5, 0.5, "255, 255, 255", 100); 
         this.last_ripple = fps.last_tick + 75;
       }
     }
@@ -535,21 +567,21 @@
       cUtil.circle(ctx, 0, 0, this.r);
       ctx.stroke();
     ctx.restore();
-  }
+  };
   Boom.prototype.update = function(slice) {
     this.r += this.speed * slice;
     this.lifetime += slice;
     if (this.lifetime > this.duration) {
       game.fx.splice(game.fx.indexOf(this), 1);
     }
-  }
+  };
   Boom.prototype.clear = function() {
     var padding = 2;
     ctx.save();
       ctx.translate(this.x, this.y);
       ctx.clearRect(-this.r - padding, -this.r - padding, (this.r + padding) * 2, (this.r + padding) * 2);
     ctx.restore();
-  }
+  };
   
   
   // Enums
@@ -577,7 +609,7 @@
   
   var player = new Player(0, "Hunter", 0, 100, Math.PI * 1.5);
 
-  var view = new View(.1, .5, .75, player, 1.75, 800);
+  var view = new View(0.1, 0.5, 0.75, player, 1.75, 800);
   var user = new LocalPlayer(player);
   
   var ball = new Ball(0, 0, 10);

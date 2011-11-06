@@ -37,3 +37,9 @@
 	window.FPS = FPS;
 
 })(jQuery);
+
+// Determine if the device has an accelerometer
+
+function moveable(){
+  return window.DeviceMotionEvent !== undefined;
+}
