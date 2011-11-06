@@ -26,8 +26,15 @@ exports = module.exports = {
     index: function(req, res, next) {
       res.render('skookball/index');
     }
-  }
+  },
 
+  // knockoutjs todos actions
+  'knockout_todos' : {
+    
+    index: function(req, res, next) {
+      res.render('knockout_todos/index');
+    }
+  }
   
 };
 

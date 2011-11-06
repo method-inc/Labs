@@ -345,6 +345,10 @@ img,
 canvas {
   max-width: 100%;
 }
+ul,
+ul li {
+  list-style: none;
+}
 html {
   background: #e2e5e1;
 }

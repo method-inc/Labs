@@ -1,0 +1,234 @@
+#demo_container {
+  background: #fff;
+  color: #333;
+}
+#todoapp {
+  width: 80%;
+  margin: 20px auto 40px;
+  background: #fff;
+  padding: 20px;
+  min-height: 300px;
+}
+#create-todo {
+  position: relative;
+}
+#create-todo input {
+  width: 80%;
+  font-size: 24px;
+  font-family: inherit;
+  line-height: 1.4em;
+  border: 0;
+  display: inline;
+  outline: none;
+  padding: 6px;
+  border: 1px solid #999;
+  box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+}
+#new-todo,
+#new-todo-hours {
+  color: #aaa;
+}
+#new-todo:active,
+#new-todo-hours:actove {
+  color: #555;
+}
+#create-todo #new-todo-hours {
+  width: 100px;
+}
+#create-todo span {
+  position: absolute;
+  z-index: 999;
+  width: 170px;
+  left: 50%;
+  margin-left: -85px;
+}
+/*match placeholder/watermark padding to border+padding for input element*/
+label.placeholder {
+  cursor: text;
+  padding: 4px 4px 4px 4px;
+  color: #aaa;
+  font-size: 140%;
+  padding: 12px;
+}
+/* html5 placeholder support */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #aaa;
+}
+input:placeholder,
+textarea:placeholder {
+  color: #aaa;
+}
+input:valid,
+textarea:valid,
+input:invalid,
+textarea:invalid {
+  background: #fff;
+}
+#addItemButton {
+  display: none;
+}
+#todo-list {
+  margin-top: 10px;
+  position: relative;
+}
+#todo-list li {
+  padding: 12px 20px 11px 0;
+  position: relative;
+  font-size: 24px;
+  line-height: 1.1em;
+  border-bottom: 1px solid #ccc;
+  list-style: none;
+}
+#todo-list li:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#todo-list li.editing {
+  padding: 0;
+  border-bottom: 0;
+}
+#todo-list .editing .display,
+#todo-list .edit {
+  display: none;
+}
+#todo-list .editing .edit {
+  display: block;
+}
+input.enteredItem {
+  font-size: 24px;
+  font-family: inherit;
+  margin: 0;
+  line-height: 1.6em;
+  border: 0;
+  outline: none;
+  padding: 0px 0px 0px 10px;
+  border: 1px solid transparent;
+  width: 338px;
+}
+#todo-list li:hover .todo-destroy,
+#todo-list .todo-hours:after {
+  content: " Hours";
+}
+#todo-list .todo-hours {
+  position: absolute;
+  right: 30px;
+  top: 13px;
+  font-size: 75%;
+  font-style: italic;
+  text-align: right;
+}
+#todo-list .done .todo-content {
+  text-decoration: line-through;
+  color: #777;
+}
+#todo-list li .check {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  margin-top: -4px;
+  z-index: 999;
+  display: none;
+}
+#todo-list .todo-destroy {
+  position: absolute;
+  right: 5px;
+  top: 14px;
+  display: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: url("/images/knockout_todos/destroy.png") no-repeat 0 0;
+}
+#todo-list li:hover .todo-destroy,
+#todo-list li:hover .check {
+  display: block;
+}
+#todo-list .todo-destroy:hover {
+  background-position: 0 -20px;
+}
+#instructions {
+  width: 520px;
+  margin: 10px auto;
+  color: #777;
+  text-shadow: rgba(255,255,255,0.80) 0 1px 0;
+  text-align: center;
+}
+#credits {
+  width: 520px;
+  margin: 30px auto;
+  color: #999;
+  text-shadow: rgba(255,255,255,0.80) 0 1px 0;
+  text-align: center;
+}
+#todo-list li {
+  border-bottom: none;
+  padding: 0;
+  border: 0;
+  margin-left: -40px;
+  padding-left: 40px;
+}
+#todo-list li .todo-content {
+  background: #fff;
+  padding: 4px 20px 4px 0;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+#todo-list .handle {
+  cursor: move;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 25px;
+  height: 15px;
+  padding: 8px 2px;
+  margin-top: -12px;
+  background: #fff url("/images/knockout_todos/drag.png") no-repeat 8px 10px;
+  border-radius: 10px 0 0 10px;
+  display: none;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+#todo-list li:hover .handle {
+  display: block;
+}
+ul li.danger,
+ul li.danger input {
+  color: #f00;
+}
+#title {
+  padding: 2px 20px;
+  background: #fff;
+  border-bottom: 1px solid #999;
+}
+#title p {
+  font-weight: bold;
+}
+#title p span {
+  font-weight: normal;
+  padding-right: 20px;
+}
+.todo-hours input {
+  width: 10%;
+  border: 1px solid transparent;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  vertical-align: top;
+}
+.enteredTime {
+  text-align: right;
+}
+.done .todo-hours,
+.done .todo-hours input {
+  color: #ccc;
+  background: #fff;
+}
+.done input.enteredItem {
+  text-decoration: line-through;
+  color: #777;
+}

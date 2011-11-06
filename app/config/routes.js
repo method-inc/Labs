@@ -17,6 +17,9 @@ exports = module.exports = function(server) {
   server.all('/demos/barcampclt_physics/:section/:id', labs.barcampclt_physics.section );
   server.all('/demos/barcampclt_physics', labs.barcampclt_physics.index);
 
+  // knockoutjs todo list
+  server.all('/demos/knockout_todos', labs.knockout_todos.index);
+
   // labs home
   server.all('/', home.index);
 };

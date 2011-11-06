@@ -37,7 +37,7 @@ exports = module.exports = (function() {
     server.use(stylus.middleware({
       src: server.set('views'),
       dest: server.set('public'),
-      debug: false,
+      debug: true,
       compileMethod: function(str) {
         return stylus(str, path)
           .set('compress', options.compressCss)

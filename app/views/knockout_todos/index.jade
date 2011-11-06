@@ -1,0 +1,57 @@
+link(rel='stylesheet', href='/styles/knockout_todos.css')  
+
+script(src="/js/lib/jquery.tmpl.js") 
+script(src="/js/lib/jquery.placeholder.js") 
+script(src="/js/lib/jquery-ui-1.8.16.custom.min.js", type="text/javascript")
+script(src="/js/lib/knockout-1.1.2.debug.js", type="text/javascript")
+script(src="/js/lib/knockout-ext-debug.js", type="text/javascript")
+    
+#demo_container
+    
+  // Todo App Interface
+ 
+  #title
+    p#current_task
+      strong(data-bind="visible: first().item() != ''") Current Task: 
+        span(data-bind="text: first().item")
+      | Time Remaining: 
+      span(data-bind="text: time_remaining, visible: first().item() != ''")
+
+  #todoapp
+    .content
+
+      #create-todo
+        input#new-todo(placeholder="What needs to be done?", type="text", data-bind='value:itemToAdd, valueUpdate: "afterkeydown"')
+        input#new-todo-hours(placeholder="hours?", type="text", data-bind='value:addTime, valueUpdate: "afterkeydown"')
+        button#addItemButton(type="submit", data-bind="click: addItem") Add
+        span.ui-tooltip-top(style="display:none;") Press Enter to save this task
+
+      #todos
+        #todo-list(data-bind='template: { name: "itemTemplate", foreach: tasks }, event: {"sortupdate": onSort}')
+
+      #todo-stats
+
+  ul#instructions
+    li(style="border-bottom:1px solid #ccc") Instructions:
+    li Add item with hours expected to take.
+    li Get stuff done...
+
+// Templates
+script#itemTemplate(type="text/html")
+  li(data-bind="attr: {id: id}, css: {done: isDone, danger: inDanger}")
+    .todo_done
+      .display
+        .handle
+        input.check(type="checkbox", data-bind="checked: isDone")
+        .todo-content
+          input.enteredItem(data-bind="value: item, valueUpdate: 'afterkeydown'")
+        .todo-hours
+          input.enteredTime(data-bind="value: enteredTime, valueUpdate: 'afterkeydown', disable: isDone")
+          | /
+          input.totalTime(data-bind="value: hours, valueUpdate: 'afterkeydown', disable: isDone")
+        span.todo-destroy(data-bind="click: remove")
+      .edit
+        input.todo-input(type="text", value="")
+  
+script(src="/js/knockout_todos/main.js")
+    
