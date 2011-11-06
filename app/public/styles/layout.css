@@ -408,6 +408,10 @@ a:visited {
   max-width: 100%;
   border: 0;
 }
+#logo span {
+  float: right;
+text-align-right
+}
 .notice {
   background: #f7f4ba;
   color: #2d332a;

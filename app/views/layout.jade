@@ -1,3 +1,4 @@
+- if (typeof page_title == 'undefined') page_title = 'Labs'
 !!! 5
 html
   head
@@ -20,6 +21,7 @@ html
         h1#logo
           a(href='/')
             img(src='/images/logo.png', alt='Skookum Labs')
+          span!= page_title
       section#primary
         div.notice We're hiring! 
           a(href='http://skookum.com/jobs/') Join us

@@ -4,11 +4,11 @@ exports = module.exports = {
   'barcampclt_physics' : {
 
     index: function(req, res, next) {
-      res.render('barcampclt_physics/index');
+      res.render('barcampclt_physics/index', {page_title: 'BarcampCLT Physics'});
     },
     
     section: function(req, res, next) {
-      res.render('barcampclt_physics/' + req.params.section + '/' + req.params.id);
+      res.render('barcampclt_physics/' + req.params.section + '/' + req.params.id, {page_title: 'BarcampCLT Physics'});
     }
   },
 
@@ -16,7 +16,7 @@ exports = module.exports = {
   'canvastest' : {
 
     index: function(req, res, next) {
-      res.render('canvastest/index');
+      res.render('canvastest/index', {page_title: 'Canvas Test'});
     }
   },
 
@@ -24,7 +24,7 @@ exports = module.exports = {
   'skookball' : {
     
     index: function(req, res, next) {
-      res.render('skookball/index');
+      res.render('skookball/index', {page_title: 'Skookball Prototype'});
     }
   },
 
@@ -32,7 +32,7 @@ exports = module.exports = {
   'knockout_todos' : {
     
     index: function(req, res, next) {
-      res.render('knockout_todos/index');
+      res.render('knockout_todos/index', {page_title: 'KnockoutJS ToDo List'});
     }
   }
   
