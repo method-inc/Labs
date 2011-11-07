@@ -1,5 +1,5 @@
 @import 'normalize';
- 
+
 
 // quick hack to get canvas responsive
 img, canvas
@@ -7,45 +7,28 @@ img, canvas
 
 ul, ul li
   list-style none
+  margin 0
+  padding 0
 
 html
   background #e2e5e1
-
-body
   font-family Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 
 #background-container
-  position fixed
-  left 0
-  right 0
-  top 0
-  bottom 0
-  z-index 1
-  overflow hidden
-  > img
-    position absolute
-    width 110%
-    left 0
-    bottom 0
-  #background-back
-    max-width 100%
-  #background-mid
-    max-width 105%
-  #background-front
-    max-width 110%
+  display none
 
 #main
   z-index 2
-  width 90%
-  max-width 1024px
-  margin 1em auto
   position relative
-  > header
+
+#header
     margin-bottom 2.5%
-  > header, #primary, #secondary
+
+#main
+  >header,
+  >section
     background rgba(45, 51, 42, 0.95)
     padding 2.5%
-    border-radius 8px
     color #fff
 
 a, a:visited
@@ -56,10 +39,11 @@ a, a:visited
   img
     max-width 100%
     border 0
-  span
-    float right
-    text-align-right
-  
+
+h1.page-title
+  float right
+  text-align right
+
 
 .notice
   background #f7f4ba
@@ -107,6 +91,42 @@ a, a:visited
   float left
 .clear
   clear both
+
+
+@media screen and (min-width: 480px)
+  #background-container
+    display block
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    z-index 1
+    overflow hidden
+
+    > img
+      position absolute
+      width 110%
+      left 0
+      bottom 0
+
+    #background-back
+      max-width 100%
+
+    #background-mid
+      max-width 105%
+
+    #background-front
+      max-width 110%
+
+  #main
+    width 90%
+    max-width 1024px
+    margin 1em auto
+
+    >header,
+    >section
+      border-radius .75em
 
 
 
