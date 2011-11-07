@@ -1,5 +1,7 @@
+@import 'mixins';
 @import 'normalize';
 
+// @group general
 
 // quick hack to get canvas responsive
 img, canvas
@@ -9,6 +11,19 @@ ul, ul li
   list-style none
   margin 0
   padding 0
+
+a
+  color #fff
+  text-decoration none
+
+.right
+  float right
+.left
+  float left
+.clear
+  clear both
+
+// @end general
 
 // @group base + layout
 
@@ -31,17 +46,13 @@ body
 
 #main
   >header,
-  >section
+  >section,
+  >div
     background rgba(45, 51, 42, 0.95)
     padding 2.5%
     color #fff
 
 // @end base + layout
-
-
-a
-  color #fff
-  text-decoration none
 
 // @group header + notification
 
@@ -69,25 +80,48 @@ h1.page-title
 
   a
     color rgb(45, 51, 42)
+    text-decoration underline
 
 // @end header + notification
 
+// @group styles
+
 .projectlist
   li
+    background rgba(255,255,255,.5)
     position relative
     display inline-block
     margin 10px
+    padding 1px
     border 2px solid #000
-    .screenthumb
-      width 150px
-      height 150px
-    span
-      position absolute
-      background rgba(0,0,0,0.75)
-      left 0
-      right 0
-      bottom 0
-      padding 5px
+
+  a
+    display block
+    transition(all .2s linear)
+
+    &:focus,
+    &:hover
+      text-shadow 0 1px 1px #666
+
+      span
+        background #000
+        border-top-color transparent
+
+  .screenthumb
+    width 150px
+    height 150px
+
+  span
+    position absolute
+    background rgba(0,0,0,0.75)
+    box-shadow 0 -1px 0 #000
+    border-top 1px solid rgba(255,255,255,.5)
+    left 1px
+    right 1px
+    bottom 1px
+    padding 5px
+
+
 
 #demo_container
   margin 10px auto
@@ -98,14 +132,7 @@ h1.page-title
   border 1px solid #999
   box-shadow 0 0 10px #000
 
-
-.right
-  float right
-.left
-  float left
-.clear
-  clear both
-
+// @end styles
 
 @media screen and (min-width: 480px)
   #background-container

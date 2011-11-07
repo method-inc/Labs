@@ -1,15 +1,16 @@
-h2 Featured Projects
-ul.projectlist
-  each project in projects.featured
-    li
-      a(href=project.link, target="_blank")
-        img.screenthumb(src='/images/screenshots/'+project.screenshot) 
-        span!= project.name
+section(role="main")
+  h2 Featured Projects
+  ul.projectlist
+    each project in projects.featured
+      li
+        a(href=project.link, target="_blank")
+          img.screenthumb(src='/images/screenshots/'+project.screenshot) 
+          span!= project.name
 
-h2 Technology Demos
-ul.projectlist
-  each project in projects.demos
-    li
-      a(href=project.link)
-        img.screenthumb(src='/images/screenshots/'+project.screenshot) 
-        span!= project.name
+  h2 Technology Demos
+  ul.projectlist
+    each project in projects.demos
+      li
+        a(href=project.link)
+          img.screenthumb(src='/images/screenshots/'+project.screenshot) 
+          span!= project.name
