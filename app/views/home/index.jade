@@ -1,16 +1,33 @@
 section(role="main")
-  h2 Featured Projects
-  ul.projectlist
-    each project in projects.featured
-      li
-        a(href=project.link, target="_blank")
-          img.screenthumb(src='/images/screenshots/'+project.screenshot) 
-          span!= project.name
+  #projects-wrapper
+    #projects-list
+      #projects-all(data-bind="visible: viewingAll")
+        h2 Featured Projects
+        ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: featured_projects}")
+        h2 Demos
+        ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: nonfeatured_projects}")
+      #projects-tagged(data-bind="visible: !viewingAll()")
+        h2 Demos
+        ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: projects}")
+    #projects-tags
+      ul
+        li.all(data-bind="css: { selected: viewingAll }")
+          a(href="#", data-bind="click: clearTags") All
+        // ko foreach: tags 
+        li(data-bind="css: { selected: selected }")
+          a(href="#", data-bind="text: name, click: toggle")
+        // /ko 
 
-  h2 Technology Demos
-  ul.projectlist
-    each project in projects.demos
-      li
-        a(href=project.link)
-          img.screenthumb(src='/images/screenshots/'+project.screenshot) 
-          span!= project.name
+script#project-thumbnail(type="text/html")
+  li(data-bind="css: { hidden: !visible() }, attr: {'aria-hidden': !visible() }")
+    a(data-bind="attr: { href: link }", target="_blank")
+      img.screenthumb(data-bind="attr: { src: screenshot }") 
+      span(data-bind="html: name")
+
+!= embed_json(projects, 'projects')
+script
+  $(function() {
+    window.projectsVM = new ProjectsVM();
+    projectsVM.load(projects);
+    ko.applyBindings(projectsVM, document.getElementById('projects-wrapper'));
+  });
