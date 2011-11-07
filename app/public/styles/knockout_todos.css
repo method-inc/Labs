@@ -35,18 +35,18 @@
   width: 20%;
 }
 #create-todo span {
-  position: absolute;
-  z-index: 999;
-  width: 170px;
   left: 50%;
+  position: absolute;
   margin-left: -85px;
+  width: 170px;
+  z-index: 999;
 }
 /*match placeholder/watermark padding to border+padding for input element*/
 label.placeholder {
-  cursor: text;
-  padding: 4px 4px 4px 4px;
   color: #aaa;
+  cursor: text;
   font-size: 140%;
+  padding: 4px;
   padding: 12px;
 }
 /* html5 placeholder support */
@@ -72,24 +72,24 @@ textarea:invalid {
   position: relative;
 }
 #todo-list li {
-  padding: 12px 20px 11px 0;
-  position: relative;
+  border-bottom: 1px solid #ccc;
   font-size: 18px;
   line-height: 1.1em;
-  border-bottom: 1px solid #ccc;
   list-style: none;
+  padding: 12px 20px 11px 0;
+  position: relative;
 }
 #todo-list li:after {
   content: "\0020";
+  clear: both;
   display: block;
   height: 0;
-  clear: both;
   overflow: hidden;
   visibility: hidden;
 }
 #todo-list li.editing {
-  padding: 0;
   border-bottom: 0;
+  padding: 0;
 }
 #todo-list .editing .display,
 #todo-list .edit {
@@ -114,55 +114,54 @@ input.enteredItem {
   content: " Hours";
 }
 #todo-list .todo-hours {
+  font-size: 75%;
+  font-style: italic;
   position: absolute;
   right: 30px;
   top: 13px;
-  font-size: 75%;
-  font-style: italic;
   text-align: right;
 }
 #todo-list .done .todo-content {
-  text-decoration: line-through;
   color: #777;
+  text-decoration: line-through;
 }
 #todo-list li .check {
+  display: none;
   position: absolute;
-  top: 50%;
   left: 20px;
   margin-top: -4px;
+  top: 50%;
   z-index: 999;
-  display: none;
 }
 #todo-list .todo-destroy {
+  background: url("/images/knockout_todos/destroy.png") no-repeat 0 0;
+  cursor: pointer;
+  display: none;
+  height: 20px;
   position: absolute;
   right: 5px;
   top: 14px;
-  display: none;
-  cursor: pointer;
   width: 20px;
-  height: 20px;
-  background: url("/images/knockout_todos/destroy.png") no-repeat 0 0;
+}
+#todo-list .todo-destroy:hover {
+  background-position: 0 -20px;
 }
 #todo-list li:hover .todo-destroy,
 #todo-list li:hover .check {
   display: block;
 }
-#todo-list .todo-destroy:hover {
-  background-position: 0 -20px;
-}
 #instructions {
-  width: 520px;
-  margin: 10px auto;
   color: #777;
-  text-shadow: rgba(255,255,255,0.80) 0 1px 0;
+  margin: 10px auto;
   text-align: center;
+  text-shadow: rgba(255,255,255,0.80) 0 1px 0;
+  width: 100%;
 }
 #credits {
-  width: 520px;
-  margin: 30px auto;
   color: #999;
-  text-shadow: rgba(255,255,255,0.80) 0 1px 0;
+  margin: 30px auto;
   text-align: center;
+  text-shadow: rgba(255,255,255,0.80) 0 1px 0;
 }
 #todo-list li {
   border-bottom: none;
@@ -178,19 +177,19 @@ input.enteredItem {
   position: relative;
 }
 #todo-list .handle {
+  background: #fff url("/images/knockout_todos/drag.png") no-repeat 8px 10px;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid #ccc;
+  border-right: none;
   cursor: move;
+  display: none;
+  height: 15px;
+  margin-top: -12px;
+  padding: 8px 2px;
   position: absolute;
   left: -10px;
   top: 50%;
   width: 25px;
-  height: 15px;
-  padding: 8px 2px;
-  margin-top: -12px;
-  background: #fff url("/images/knockout_todos/drag.png") no-repeat 8px 10px;
-  border-radius: 10px 0 0 10px;
-  display: none;
-  border: 1px solid #ccc;
-  border-right: none;
 }
 #todo-list li:hover .handle {
   display: block;
@@ -200,9 +199,9 @@ ul li.danger input {
   color: #f00;
 }
 #title {
-  padding: 2px 20px;
   background: #fff;
   border-bottom: 1px solid #999;
+  padding: 2px 20px;
 }
 #title p {
   font-weight: bold;
@@ -212,12 +211,11 @@ ul li.danger input {
   padding-right: 20px;
 }
 .todo-hours input {
-  width: 10%;
   border: 1px solid transparent;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-style: italic;
   vertical-align: top;
+  width: 10%;
 }
 .enteredTime {
   text-align: right;
@@ -225,9 +223,8 @@ ul li.danger input {
 .done .todo-hours,
 .done .todo-hours input {
   color: #ccc;
-  background: #fff;
 }
 .done input.enteredItem {
-  text-decoration: line-through;
   color: #777;
+  text-decoration: line-through;
 }
