@@ -1,5 +1,7 @@
+@import 'mixins';
 @import 'normalize';
- 
+
+// @group general
 
 // quick hack to get canvas responsive
 img, canvas
@@ -7,89 +9,119 @@ img, canvas
 
 ul, ul li
   list-style none
+  margin 0
+  padding 0
+
+a
+  color #fff
+  text-decoration none
+
+.right
+  float right
+.left
+  float left
+.clear
+  clear both
+
+// @end general
+
+// @group base + layout
 
 html
   background #e2e5e1
 
 body
-  font-family Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  //font-family Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
 
 #background-container
-  position fixed
-  left 0
-  right 0
-  top 0
-  bottom 0
-  z-index 1
-  overflow hidden
-  > img
-    position absolute
-    width 110%
-    left 0
-    bottom 0
-  #background-back
-    max-width 100%
-  #background-mid
-    max-width 105%
-  #background-front
-    max-width 110%
+  display none
 
 #main
   z-index 2
-  width 90%
-  max-width 1024px
-  margin 1em auto
   position relative
-  > header
+
+#header
     margin-bottom 2.5%
-  > header, #primary, #secondary
+
+#main
+  >header,
+  >section,
+  >div
     background rgba(45, 51, 42, 0.95)
     padding 2.5%
-    border-radius 8px
     color #fff
 
-a, a:visited
-  color #fff
+// @end base + layout
+
+// @group header + notification
 
 #logo
   margin 0
   img
     max-width 100%
     border 0
-  span
-    float right
-    text-align-right
-  
+
+h1.page-title
+  float right
+  text-align right
+
 
 .notice
-  background #f7f4ba
+  background #F0EA7F
   color rgb(45, 51, 42)
   border-radius 3px
-  border 1px solid #ddd588
+  border 1px solid #C7B938
   font-weight bold
-  margin -2em auto 0
+  margin -5.5% auto 0
   padding .375em .75em
   text-align center
   width 50%
-  a, a:visited
+
+  a
     color rgb(45, 51, 42)
+    text-decoration underline
+
+// @end header + notification
+
+// @group styles
 
 .projectlist
   li
+    background rgba(255,255,255,.5)
     position relative
     display inline-block
     margin 10px
+    padding 1px
     border 2px solid #000
-    .screenthumb
-      width 150px
-      height 150px
-    span
-      position absolute
-      background rgba(0,0,0,0.75)
-      left 0
-      right 0
-      bottom 0
-      padding 5px
+
+  a
+    display block
+    transition(all .2s linear)
+
+    &:focus,
+    &:hover
+      text-shadow 0 1px 1px #666
+
+      span
+        background #000
+        border-top-color transparent
+
+  .screenthumb
+    width 150px
+    height 150px
+
+  span
+    position absolute
+    background rgba(0,0,0,0.75)
+    box-shadow 0 -1px 0 #000
+    border-top 1px solid rgba(255,255,255,.5)
+    left 1px
+    right 1px
+    bottom 1px
+    padding 5px
+
+
 
 #demo_container
   margin 10px auto
@@ -100,13 +132,43 @@ a, a:visited
   border 1px solid #999
   box-shadow 0 0 10px #000
 
+// @end styles
 
-.right
-  float right
-.left
-  float left
-.clear
-  clear both
+@media screen and (min-width: 480px)
+  #background-container
+    display block
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    z-index 1
+    overflow hidden
+
+    > img
+      position absolute
+      width 110%
+      left 0
+      bottom 0
+
+    #background-back
+      max-width 100%
+
+    #background-mid
+      max-width 105%
+
+    #background-front
+      max-width 110%
+
+  #main
+    width 90%
+    max-width 1024px
+    margin 1em auto
+
+    >header,
+    >section,
+    >div
+      border-radius .75em
 
 
 
