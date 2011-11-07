@@ -99,7 +99,7 @@ textarea:invalid {
   display: block;
 }
 input.enteredItem {
-  font-size: 24px;
+  font-size: 18px;
   font-family: inherit;
   margin: 0;
   line-height: 1.6em;
