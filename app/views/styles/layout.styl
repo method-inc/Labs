@@ -10,9 +10,14 @@ ul, ul li
   margin 0
   padding 0
 
+// @group base + layout
+
 html
   background #e2e5e1
-  font-family Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
+body
+  //font-family Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
 
 #background-container
   display none
@@ -31,8 +36,14 @@ html
     padding 2.5%
     color #fff
 
-a, a:visited
+// @end base + layout
+
+
+a
   color #fff
+  text-decoration none
+
+// @group header + notification
 
 #logo
   margin 0
@@ -46,17 +57,20 @@ h1.page-title
 
 
 .notice
-  background #f7f4ba
+  background #F0EA7F
   color rgb(45, 51, 42)
   border-radius 3px
-  border 1px solid #ddd588
+  border 1px solid #C7B938
   font-weight bold
-  margin -2em auto 0
+  margin -5.5% auto 0
   padding .375em .75em
   text-align center
   width 50%
-  a, a:visited
+
+  a
     color rgb(45, 51, 42)
+
+// @end header + notification
 
 .projectlist
   li

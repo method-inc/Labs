@@ -55,9 +55,6 @@ textarea {
 a {
   color: #00e;
 }
-a:visited {
-  color: #551a8b;
-}
 a:hover {
   color: #06e;
 }
@@ -353,7 +350,6 @@ ul li {
 }
 html {
   background: #e2e5e1;
-  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 }
 #background-container {
   display: none;
@@ -371,9 +367,9 @@ html {
   padding: 2.5%;
   color: #fff;
 }
-a,
-a:visited {
+a {
   color: #fff;
+  text-decoration: none;
 }
 #logo {
   margin: 0;
@@ -387,18 +383,17 @@ h1.page-title {
   text-align: right;
 }
 .notice {
-  background: #f7f4ba;
+  background: #f0ea7f;
   color: #2d332a;
   border-radius: 3px;
-  border: 1px solid #ddd588;
+  border: 1px solid #c7b938;
   font-weight: bold;
-  margin: -2em auto 0;
+  margin: -5.5% auto 0;
   padding: 0.375em 0.75em;
   text-align: center;
   width: 50%;
 }
-.notice a,
-.notice a:visited {
+.notice a {
   color: #2d332a;
 }
 .projectlist li {
