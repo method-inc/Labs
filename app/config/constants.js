@@ -16,13 +16,7 @@ exports = module.exports = function(env) {
       this.showStack = true;
       this.errorToHtml = true;
       this.redis = { host: 'localhost', port: 6379, db: 'labs' };
-      //this.mongo = { db: 'mongodb://localhost/passport'}
-      //this.mysql = { host: 'localhost', port: 3306, user: 'root', password: 'root', database: 'clickdummy' }
-    },
-    staging: function() {
-      this.host = 'http://labs.skookum.com';
-      this.dumpExceptions = false;
-      this.errorToHtml = false;
+      this.mongo = { db: 'mongodb://localhost/labs'};
     },
     production: function() {
       this.host = "http://labs.skookum.com";
@@ -31,8 +25,7 @@ exports = module.exports = function(env) {
   
   // Cascade options
   
-  option_tables.staging.prototype = new option_tables.development();
-  option_tables.production.prototype = new option_tables.staging();
+  option_tables.production.prototype = new option_tables.development();
 
   return new option_tables[env]();
   
