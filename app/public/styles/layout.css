@@ -507,7 +507,8 @@ h1.page-title {
     margin: 1em auto;
   }
   #main >header,
-  #main >section {
+  #main >section,
+  #main >div {
     -webkit-border-radius: 0.75em;
     -moz-border-radius: 0.75em;
     -ms-border-radius: 0.75em;
