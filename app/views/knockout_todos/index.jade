@@ -18,10 +18,9 @@ script(src="/js/lib/knockout-ext-debug.js")
 
   #todoapp
     .content
-
       #create-todo
         input#new-todo(placeholder="What needs to be done?", type="text", data-bind='value:itemToAdd, valueUpdate: "afterkeydown"')
-        input#new-todo-hours(placeholder="hours?", type="text", data-bind='value:addTime, valueUpdate: "afterkeydown"')
+        input#new-todo-hours(placeholder="hours?", type="number", data-bind='value:addTime, valueUpdate: "afterkeydown"')
         button#addItemButton(type="submit", data-bind="click: addItem") Add
         span.ui-tooltip-top(style="display:none;") Press Enter to save this task
 
@@ -47,9 +46,9 @@ script(src="/js/lib/knockout-ext-debug.js")
       #todo-stats
 
   ul#instructions
-    li(style="border-bottom:1px solid #ccc") Instructions:
-    li Add item with hours expected to take.
-    li Get stuff done...
+    li Instructions
+    li Add item with hours expected to complete.
+    li Get stuff done!
 
 script(src="/js/knockout_todos/main.js")
 

@@ -3,93 +3,101 @@
   color #333
 
 #todoapp
-  width 80%
+  width 90%
   margin 20px auto 40px
   background white
   padding 20px
   min-height 300px
 
 #create-todo
-  position: relative;
-
-#create-todo input
-  width: 80%;
-  font-size: 24px;
-  font-family: inherit;
-  line-height: 1.4em;
-  border: 0;
-  display:inline;
-  outline: none;
-  padding: 6px;
-  border: 1px solid #999999;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-
-#new-todo, #new-todo-hours
-  color #aaa
-
-#new-todo:active, #new-todo-hours:actove
-  color #555
-
-#create-todo #new-todo-hours
-  width:100px;
-
-#create-todo span
-  position: absolute;
-  z-index: 999;
-  width: 170px;
-  left: 50%;
-  margin-left: -85px;
-  
-/*match placeholder/watermark padding to border+padding for input element*/
-label.placeholder
-  cursor: text;
-  padding: 4px 4px 4px 4px;
-  color: #AAA;
-  font-size:140%;
-  padding:12px;
-
-/* html5 placeholder support */
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder
-  color:#AAA;
-
-input:placeholder, textarea:placeholder
-  color:#AAA;
-  
-input:valid, textarea:valid, input:invalid, textarea:invalid 
-  background #fff
-
-#addItemButton
-  display:none;
-
-#todo-list
-  margin-top: 10px;
   position relative
 
-#todo-list li
-  padding: 12px 20px 11px 0;
-  position: relative;
-  font-size: 18px;
-  line-height: 1.1em;
-  border-bottom: 1px solid #cccccc;
-  list-style none
+  input
+    border 1px solid #999999
+    box-shadow rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+    color #aaa
+    display inline
+    font-size 24px
+    font-family inherit
+    line-height 1.4em
+    outline none
+    padding 6px
+    width 80%
 
-#todo-list li:after
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
+    &:focus,
+    &:active
+      color #555
 
-#todo-list li.editing
-  padding: 0;
-  border-bottom: 0;
+  #new-todo-hours
+    position absolute
+    top 0
+    right 0
+    width 20%
 
-#todo-list .editing .display, #todo-list .edit
-  display: none;
-    
-#todo-list .editing .edit
-  display: block;
+  span
+    left 50%
+    position absolute
+    margin-left -85px
+    width 170px
+    z-index 999
+
+/*match placeholder/watermark padding to border+padding for input element*/
+label.placeholder
+  color #AAA
+  cursor text
+  font-size 140%
+  padding 4px
+  padding 12px
+
+/* html5 placeholder support */
+
+input,
+textarea
+  &::-webkit-input-placeholder
+    color #AAA
+
+  &:placeholder
+    color #AAA
+
+input,
+textarea
+  &:valid,
+  &:invalid
+    background #fff
+
+#addItemButton
+  display none
+
+#todo-list
+  margin-top 10px
+  position relative
+
+  li
+    border-bottom 1px solid #ccc
+    font-size 18px
+    line-height 1.1em
+    list-style none
+    padding 12px 20px 11px 0
+    position relative
+
+    &:after
+      content "\0020"
+      clear both
+      display block
+      height 0
+      overflow hidden
+      visibility hidden
+
+    &.editing
+      border-bottom 0
+      padding 0
+
+  .editing .display,
+  .edit
+    display none
+
+  .editing .edit
+    display block
 
 input.enteredItem
   font-size: 18px;
@@ -102,120 +110,126 @@ input.enteredItem
   border: 1px solid transparent;
   width:90%;
 
-#todo-list li:hover .todo-destroy, #todo-list .todo-hours:after
- content:" Hours";
+#todo-list
+  li:hover .todo-destroy,
+  .todo-hours:after
+    content " Hours"
 
-#todo-list .todo-hours
-  position: absolute;
-  right: 30px;
-  top: 13px;
-  font-size:75%;
-  font-style:italic;
-  text-align: right;
+  .todo-hours
+    font-size 75%
+    font-style italic
+    position absolute
+    right 30px
+    top 13px
+    text-align right
 
-#todo-list .done .todo-content
-  text-decoration: line-through;
-  color: #777777;
+  .done .todo-content
+    color #777
+    text-decoration line-through
 
-#todo-list li .check
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  margin-top: -4px;
-  z-index: 999;
-  display:none;
+  li .check
+    display none
+    position absolute
+    left 20px
+    margin-top -4px
+    top 50%
+    z-index 999
 
-#todo-list .todo-destroy
-  position: absolute;
-  right: 5px;
-  top: 14px;
-  display: none;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  background: url('/images/knockout_todos/destroy.png') no-repeat 0 0;
+  .todo-destroy
+    background url('/images/knockout_todos/destroy.png') no-repeat 0 0
+    cursor pointer
+    display none
+    height 20px
+    position absolute
+    right 5px
+    top 14px
+    width 20px
 
-#todo-list li:hover .todo-destroy, #todo-list li:hover .check
-  display: block;
+    &:hover
+      background-position 0 -20px;
 
-#todo-list .todo-destroy:hover
-  background-position: 0 -20px;
+  li:hover .todo-destroy,
+  li:hover .check
+    display block
 
 #instructions
-  width: 520px;
-  margin: 10px auto;
-  color: #777777;
-  text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
-  text-align: center;
+  color #777
+  margin 10px auto
+  text-align center
+  text-shadow rgba(255, 255, 255, 0.8) 0 1px 0
+  width 100%
 
 #credits
-  width: 520px;
-  margin: 30px auto;
-  color: #999;
-  text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
-  text-align: center;
+  color #999
+  margin 30px auto
+  text-align center
+  text-shadow rgba(255, 255, 255, 0.8) 0 1px 0
 
-#todo-list li
-  border-bottom: none;
-  padding: 0;
-  border: 0;
-  margin-left: -40px;
-  padding-left: 40px;
+#todo-list
+  li
+    border-bottom none
+    padding 0
+    border 0
+    margin-left -40px
+    padding-left 40px
 
-#todo-list li .todo-content
-  background: #fff;
-  padding: 4px 20px 4px 0;
-  border-bottom: 1px solid #cccccc;
-  position: relative;
+    .todo-content
+      background #fff
+      padding 4px 20px 4px 0
+      border-bottom 1px solid #ccc
+      position relative
 
-#todo-list .handle
-  cursor: move;
-  position: absolute;
-  left: -10px;
-  top: 50%;
-  width: 25px;
-  height: 15px;
-  padding: 8px 2px;
-  margin-top: -12px;
-  background: #fff url('/images/knockout_todos/drag.png') no-repeat 8px 10px;
-  border-radius:          10px 0 0 10px;
-  display: none;
-  border:1px solid #ccc;
-  border-right:none;
+  .handle
+    background #fff url('/images/knockout_todos/drag.png') no-repeat 8px 10px
+    border-radius 10px 0 0 10px
+    border 1px solid #ccc
+    border-right none
+    cursor move
+    display none
+    height 15px
+    margin-top -12px
+    padding 8px 2px
+    position absolute
+    left -10px
+    top 50%
+    width 25px
 
-#todo-list li:hover .handle
-  display: block;
+  li:hover .handle
+    display block
 
-ul li.danger, ul li.danger input
-  color: red;
+ul
+  li.danger,
+  li.danger input
+    color red
 
 #title
-  padding: 2px 20px;
-  background: #fff;
+  background #fff
   border-bottom 1px solid #999
+  padding 2px 20px
 
 #title p
-  font-weight: bold;
+  font-weight bold
 
 #title p span
-  font-weight: normal;
-  padding-right: 20px;
+  font-weight normal
+  padding-right 20px
 
 .todo-hours input
-  width: 10%;
-  border: 1px solid transparent;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-style: italic;
-  vertical-align: top;
+  border 1px solid transparent
+  font-size 16px
+  font-style italic
+  vertical-align top
+  width 10%
 
 .enteredTime
-  text-align: right;
+  text-align right
 
-.done .todo-hours, .done .todo-hours input
-  color: #ccc;
-  background:#FFF;
+.done
+  .todo-hours,
+  .todo-hours input
+    color #ccc
 
-.done input.enteredItem
-  text-decoration: line-through;
-  color: #777777;
+  input.enteredItem
+    color #777
+    text-decoration line-through
+
