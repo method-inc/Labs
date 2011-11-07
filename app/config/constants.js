@@ -20,12 +20,12 @@ exports = module.exports = function(env) {
       //this.mysql = { host: 'localhost', port: 3306, user: 'root', password: 'root', database: 'clickdummy' }
     },
     staging: function() {
-      this.host = 'http://173.230.134.69';
+      this.host = 'http://labs.skookum.com';
       this.dumpExceptions = false;
       this.errorToHtml = false;
     },
     production: function() {
-      this.host = "http://173.230.134.69";
+      this.host = "http://labs.skookum.com";
     }
   };
   
