@@ -2,14 +2,14 @@
   "name":"Skookum_Labs_Site",
   "version":"0.0.1",
   "dependencies":{
-    "jade":">=0.13.0",
-    "express":">=2.4.3",
-    "stylus":">=0.13.7",
-    "connect":"=1.6.0",
-    "connect-timeout":">=0.0.1",
-    "connect-redis":"=1.0.6",
-    "cluster":">=0.4.2",
-    "express-messages":">=0.0.1"
+    "jade":"latest",
+    "express":"latest",
+    "stylus":"latest",
+    "connect":"latest",
+    "connect-timeout":"latest",
+    "connect-redis":"latest",
+    "cluster":"latest",
+    "express-messages":"latest"
   },
   "directories":{}
 }
