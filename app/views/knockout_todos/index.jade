@@ -20,7 +20,7 @@ script(src="/js/lib/knockout-ext-debug.js")
     .content
       #create-todo
         input#new-todo(placeholder="What needs to be done?", type="text", data-bind='value:itemToAdd, valueUpdate: "afterkeydown"')
-        input#new-todo-hours(placeholder="hours?", type="text", data-bind='value:addTime, valueUpdate: "afterkeydown"')
+        input#new-todo-hours(placeholder="hours?", type="number", data-bind='value:addTime, valueUpdate: "afterkeydown"')
         button#addItemButton(type="submit", data-bind="click: addItem") Add
         span.ui-tooltip-top(style="display:none;") Press Enter to save this task
 
