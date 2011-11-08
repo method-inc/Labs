@@ -1,12 +1,12 @@
 section(role="main")
   #projects-wrapper
-    #projects-list
-      #projects-all(data-bind="visible: viewingAll")
+    #projects-list(style="position:relative")
+      #projects-all(data-bind="morph: {show: viewingAll, connected: '#projects-tagged'}")
         h2 Featured Projects
         ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: featured_projects}")
         h2 Demos
         ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: nonfeatured_projects}")
-      #projects-tagged(data-bind="visible: !viewingAll()")
+      #projects-tagged(data-bind="morph: {show: !viewingAll(), connected: '#projects-all'}")
         h2 Demos
         ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: projects}")
         p.empty(data-bind="visible: projectsEmpty") No projects match all the tags you've selected! Maybe you should try again?
@@ -20,7 +20,7 @@ section(role="main")
         // /ko 
 
 script#project-thumbnail(type="text/html")
-  li(data-bind="css: { hidden: !visible() }, attr: {'aria-hidden': !visible() }")
+  li(data-bind="css: { 'project-hidden': !visible() }, attr: {'aria-hidden': !visible() }")
     a(data-bind="attr: { href: link }", target="_blank")
       img.screenthumb(data-bind="attr: { src: screenshot }") 
       span(data-bind="html: name")

@@ -1,5 +1,6 @@
 @import 'mixins';
 @import 'normalize';
+@import 'animations'
 
 // @group general
 
@@ -118,19 +119,39 @@ h1.page-title
         padding-bottom 0.5em
 
 .projectlist
+  transition-property height
+  transition-duration 0.5s
+  transition-delay 0
   li
     background rgba(255,255,255,.5)
     position relative
     display inline-block
     margin 10px
     padding 1px
+    width 150px
+    height 150px
     border 2px solid #000
-    &.hidden
-      display none
-
+    transition-property opacity, width, height, padding, margin, border-width, transform, -moz-transform, -webkit-transform, -o-transform, -ms-transform
+    transition-duration 0.5s
+    transition-delay 0
+    &.project-hidden
+      width 0px
+      height 0px
+      padding 0px
+      margin 0px
+      border-width 0px
+      opacity 0
+      transform scale3d(0,0,0)
+      span
+        display none
+    img
+      margin 0
+      padding 0
   a
     display block
     transition(all .2s linear)
+    overflow hidden
+    text-decoration none
 
     &:focus,
     &:hover
@@ -139,6 +160,7 @@ h1.page-title
       span
         background #000
         border-top-color transparent
+        text-decoration underline
 
   .screenthumb
     width 150px
