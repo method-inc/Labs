@@ -9,10 +9,11 @@ section(role="main")
       #projects-tagged(data-bind="visible: !viewingAll()")
         h2 Demos
         ul.projectlist(data-bind="template: {name: 'project-thumbnail', foreach: projects}")
+        p.empty(data-bind="visible: projectsEmpty") No projects match all the tags you've selected! Maybe you should try again?
     #projects-tags
       ul
         li.all(data-bind="css: { selected: viewingAll }")
-          a(href="#", data-bind="click: clearTags") All
+          a(href="#", data-bind="click: clearTags") Show All
         // ko foreach: tags 
         li(data-bind="css: { selected: selected }")
           a(href="#", data-bind="text: name, click: toggle")

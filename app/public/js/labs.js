@@ -28,6 +28,12 @@ function ProjectsVM() {
   this.viewingAll = ko.dependentObservable(function() {
     return this.selectedTags().length == 0;
   }, this);
+  
+  this.projectsEmpty = ko.dependentObservable(function() {
+    return _.all(this.projects(), function(p) {
+      return !p.visible();
+    });
+  }, this);
 }
 
 ProjectsVM.prototype = {
@@ -83,10 +89,12 @@ function ProjectModel(data, parent) {
 
 function TagModel(name, parent) {
   this.name = ko.observable(name);
-  this.selected = ko.dependentObservable(function() {
-    return _.indexOf(parent.selectedTags(), this.name()) > -1;
-  }, this);
   var self = this;
+  this.selected = ko.dependentObservable(function() {
+    return _.any(parent.selectedTags(), function(t) {
+      return t.name() === self.name();
+    });
+  }, this);
   this.toggle = function() {
     parent.toggleTag(self);
   }

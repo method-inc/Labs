@@ -96,6 +96,26 @@ h1.page-title
 #projects-tags
   width 20%
   margin-top 1em
+  ul
+    li
+      display inline-block
+      margin 0.5em
+      a, a:visited
+        display inline-block
+        padding 0.25em 0.5em
+        background two-stop(#fff, #ddd)
+        border-radius 4px
+        color #000
+        &:active
+          background two-stop(#ddd, #fff)
+      &.selected
+        a, a:visited
+          background two-stop(#63abf7, #5e99cd)
+          color #fff
+      &.all
+        display block
+        border-bottom 2px solid #000
+        padding-bottom 0.5em
 
 .projectlist
   li

@@ -429,6 +429,57 @@ h1.page-title {
   width: 20%;
   margin-top: 1em;
 }
+#projects-tags ul li {
+  display: inline-block;
+  margin: 0.5em;
+}
+#projects-tags ul li a,
+#projects-tags ul li a:visited {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  background: -moz-linear-gradient(top, #fff, #ddd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #ddd));
+  background: -webkit-linear-gradient(top, #fff 0%, #ddd 100%);
+  background: -o-linear-gradient(top, #fff 0%, #ddd 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #ddd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#ddd',GradientType=0 );
+  background: linear-gradient(top, #fff 0%, #fff 100%);
+  background: /* W3C */;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  color: #000;
+}
+#projects-tags ul li a:active,
+#projects-tags ul li a:visited:active {
+  background: -moz-linear-gradient(top, #ddd, #fff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd), color-stop(100%, #fff));
+  background: -webkit-linear-gradient(top, #ddd 0%, #fff 100%);
+  background: -o-linear-gradient(top, #ddd 0%, #fff 100%);
+  background: -ms-linear-gradient(top, #ddd 0%, #fff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddd', endColorstr='#fff',GradientType=0 );
+  background: linear-gradient(top, #ddd 0%, #ddd 100%);
+  background: /* W3C */;
+}
+#projects-tags ul li.selected a,
+#projects-tags ul li.selected a:visited {
+  background: -moz-linear-gradient(top, #63abf7, #5e99cd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #63abf7), color-stop(100%, #5e99cd));
+  background: -webkit-linear-gradient(top, #63abf7 0%, #5e99cd 100%);
+  background: -o-linear-gradient(top, #63abf7 0%, #5e99cd 100%);
+  background: -ms-linear-gradient(top, #63abf7 0%, #5e99cd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63abf7', endColorstr='#5e99cd',GradientType=0 );
+  background: linear-gradient(top, #63abf7 0%, #63abf7 100%);
+  background: /* W3C */;
+  color: #fff;
+}
+#projects-tags ul li.all {
+  display: block;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5em;
+}
 .projectlist li {
   background: rgba(255,255,255,0.50);
   position: relative;
