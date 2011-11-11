@@ -342,126 +342,6 @@ td {
     page-break-after: avoid;
   }
 }
-@-moz-keyframes projects {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -moz-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    -o-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
-  }
-
-  50% {
-    -webkit-transform: scale3d(0, 0, 1);
-    -moz-transform: scale3d(0, 0, 1);
-    -ms-transform: scale3d(0, 0, 1);
-    -o-transform: scale3d(0, 0, 1);
-    transform: scale3d(0, 0, 1);
-    opacity: 0;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-  }
-}
-@-webkit-keyframes projects {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -moz-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    -o-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
-  }
-
-  50% {
-    -webkit-transform: scale3d(0, 0, 1);
-    -moz-transform: scale3d(0, 0, 1);
-    -ms-transform: scale3d(0, 0, 1);
-    -o-transform: scale3d(0, 0, 1);
-    transform: scale3d(0, 0, 1);
-    opacity: 0;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-  }
-}
-@-o-keyframes projects {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -moz-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    -o-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
-  }
-
-  50% {
-    -webkit-transform: scale3d(0, 0, 1);
-    -moz-transform: scale3d(0, 0, 1);
-    -ms-transform: scale3d(0, 0, 1);
-    -o-transform: scale3d(0, 0, 1);
-    transform: scale3d(0, 0, 1);
-    opacity: 0;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-  }
-}
-@-ms-keyframes projects {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -moz-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    -o-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
-  }
-
-  50% {
-    -webkit-transform: scale3d(0, 0, 1);
-    -moz-transform: scale3d(0, 0, 1);
-    -ms-transform: scale3d(0, 0, 1);
-    -o-transform: scale3d(0, 0, 1);
-    transform: scale3d(0, 0, 1);
-    opacity: 0;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-  }
-}
-@keyframes projects {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -moz-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    -o-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
-  }
-
-  50% {
-    -webkit-transform: scale3d(0, 0, 1);
-    -moz-transform: scale3d(0, 0, 1);
-    -ms-transform: scale3d(0, 0, 1);
-    -o-transform: scale3d(0, 0, 1);
-    transform: scale3d(0, 0, 1);
-    opacity: 0;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-  }
-}
 img,
 canvas {
   max-width: 100%;
@@ -636,11 +516,48 @@ h1.page-title {
   -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
   -webkit-transition-delay: 0;
   -moz-transition-delay: 0;
   -ms-transition-delay: 0;
   -o-transition-delay: 0;
   transition-delay: 0;
+}
+.projectlist li img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -ms-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.75s;
+  -moz-transition-duration: 0.75s;
+  -ms-transition-duration: 0.75s;
+  -o-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  max-width: none;
+  -webkit-transform-style: preserves-3d;
+  -moz-transform-style: preserves-3d;
+  -ms-transform-style: preserves-3d;
+  -o-transform-style: preserves-3d;
+  transform-style: preserves-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .projectlist li.project-hidden {
   width: 0px;
@@ -656,6 +573,19 @@ h1.page-title {
   transform: scale3d(0, 0, 0);
 }
 .projectlist li.project-hidden span {
+  display: none;
+}
+.projectlist li.project-modal img {
+  z-index: 109;
+  padding: 0px;
+  border-width: 0px;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.projectlist li.project-modal span {
   display: none;
 }
 .projectlist li img {
@@ -699,6 +629,64 @@ h1.page-title {
   right: 1px;
   bottom: 1px;
   padding: 5px;
+}
+#projects-modal {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  z-index: 120;
+  border: 5px solid #000;
+  background: rgba(0,0,0,0.90);
+  display: none;
+  -webkit-transform-style: preserves-3d;
+  -moz-transform-style: preserves-3d;
+  -ms-transform-style: preserves-3d;
+  -o-transform-style: preserves-3d;
+  transform-style: preserves-3d;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+#projects-modal.shown {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -ms-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.75s;
+  -moz-transition-duration: 0.75s;
+  -ms-transition-duration: 0.75s;
+  -o-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transform: rotateY(360deg) translateZ(2000px);
+  -moz-transform: rotateY(360deg) translateZ(2000px);
+  -ms-transform: rotateY(360deg) translateZ(2000px);
+  -o-transform: rotateY(360deg) translateZ(2000px);
+  transform: rotateY(360deg) translateZ(2000px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+#projects-modal-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.20);
+  display: none;
+  z-index: 11;
 }
 #demo_container {
   margin: 10px auto;

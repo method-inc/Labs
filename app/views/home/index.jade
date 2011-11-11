@@ -18,10 +18,15 @@ section(role="main")
         li(data-bind="css: { selected: selected }")
           a(href="#", data-bind="text: name, click: toggle")
         // /ko 
+  #projects-modal-overlay
+  #projects-modal
+    h2(data-bind="text:name")
+    p(data-bind="text: description")
+    img(data-bind="attr: { src: screenshot }", align="right")
 
 script#project-thumbnail(type="text/html")
-  li(data-bind="css: { 'project-hidden': !visible() }, attr: {'aria-hidden': !visible() }")
-    a(data-bind="attr: { href: link }", target="_blank")
+  li(data-bind="attr: {'class': id, 'aria-hidden': !visible() }, css: { 'project-hidden': !visible() }")
+    a(data-bind="attr: { href: link }, click: showModal", target="_blank")
       img.screenthumb(data-bind="attr: { src: screenshot }") 
       span(data-bind="html: name")
 
@@ -31,4 +36,6 @@ script
     window.projectsVM = new ProjectsVM();
     projectsVM.load(projects);
     ko.applyBindings(projectsVM, document.getElementById('projects-wrapper'));
+    
+    ko.applyBindings(projectsVM.selectedProject, document.getElementById('projects-modal'));
   });

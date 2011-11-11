@@ -133,7 +133,19 @@ h1.page-title
     border 2px solid #000
     transition-property opacity, width, height, padding, margin, border-width, transform, -moz-transform, -webkit-transform, -o-transform, -ms-transform
     transition-duration 0.5s
+    transition-timing-function ease-in-out
     transition-delay 0
+    img
+      position absolute
+      left 0
+      top 0
+      z-index 99
+      transition-property all
+      transition-duration 0.75s
+      transition-timing-function ease-out
+      max-width none
+      transform-style preserves-3d
+      backface-visibility hidden
     &.project-hidden
       width 0px
       height 0px
@@ -142,6 +154,14 @@ h1.page-title
       border-width 0px
       opacity 0
       transform scale3d(0,0,0)
+      span
+        display none
+    &.project-modal
+      img
+        z-index 109
+        padding 0px
+        border-width 0px
+        transform rotateY(180deg)
       span
         display none
     img
@@ -176,7 +196,33 @@ h1.page-title
     bottom 1px
     padding 5px
 
-
+#projects-modal
+  width 500px
+  height 500px
+  position absolute
+  left 50%
+  top 10%
+  z-index 120
+  border 5px solid #000
+  background rgba(0,0,0,0.9)
+  display none
+  transform-style preserves-3d
+  transform rotateY(180deg)
+  &.shown
+    transition-property all
+    transition-duration 0.75s
+    transition-timing-function ease-out
+    transform rotateY(360deg) translateZ(2000px)
+    backface-visibility hidden
+#projects-modal-overlay
+  position fixed
+  left 0
+  right 0
+  top 0
+  bottom 0
+  background rgba(0,0,0,0.2)
+  display none
+  z-index 11
 
 #demo_container
   margin 10px auto
