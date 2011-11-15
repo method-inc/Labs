@@ -28,4 +28,11 @@ html
           a(href='http://skookum.com/jobs/') Join us
         != body
 
-    script(src="/js/labs.js")
+    script(src='/js/labs.js')
+    script
+      var _gaq=[['_setAccount','UA-332390-1'],['_trackPageview'],['_trackPageLoadTime']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+
+
