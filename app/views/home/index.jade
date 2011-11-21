@@ -26,7 +26,8 @@ section(role="main")
 
 script#project-thumbnail(type="text/html")
   li(data-bind="attr: {'class': id, 'aria-hidden': !visible() }, css: { 'project-hidden': !visible() }")
-    a(data-bind="attr: { href: link }, click: showModal", target="_blank")
+    //a(data-bind="attr: { href: link }, click: showModal", target="_blank")
+    a(data-bind="attr: { href: link }")
       img.screenthumb(data-bind="attr: { src: screenshot }") 
       span(data-bind="html: name")
 
