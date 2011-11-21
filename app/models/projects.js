@@ -56,7 +56,7 @@ Projects.prototype.find_all = function(callback) {
         description: 'This was built for the javascript 10k contest in 2010.  The original version, when minified, was less then 10k in size (it\'s expanded now so you can read the code).  Everything is created in code, there are no images.', 
         link: this.host+':3200', 
         screenshot:'FishAquarium.jpg', 
-        tags:['html5', 'ccss3', 'canvas']},
+        tags:['html5', 'css3', 'canvas']},
       { name: 'Tribes 2D : Operation MAX', 
         featured: false,
         description: 'This is a demonstration of canvas graphics and multiplayer web socket functionality.  Every viewer gets a character to move around the board and can see any other viewers on the page.',
