@@ -26,7 +26,7 @@ function ProjectsVM() {
   this.selectedTags = ko.observableArray([]);
   
   this.viewingAll = ko.dependentObservable(function() {
-    return this.selectedTags().length == 0;
+    return this.selectedTags().length === 0;
   }, this).extend({ throttle: 100 });
   
   this.projectsEmpty = ko.dependentObservable(function() {
@@ -73,7 +73,7 @@ ProjectsVM.prototype = {
             top: (image_offset.top - parent_offset.top) + 'px', 
             width: i.outerWidth(), 
             height: i.outerHeight() };
-    p.css(modal_beginning_position);
+    // p.css(modal_beginning_position);
     this.selectedProject(proj);
     
     _.delay(function() {
@@ -84,38 +84,44 @@ ProjectsVM.prototype = {
       image_position.left = (position.left - imgOffset.left + parent_offset.left);
       image_position.top = (position.top - imgOffset.top + parent_offset.top);
       p.addClass('shown');
-      p.css(position);
+      // p.css(position);
       e.closest('li').addClass('project-modal');
-      i.css(image_position);
+      // i.css(image_position);
       $('#projects-modal-overlay').fadeIn().click(close_modal);
+      $('a.closer').click(close_modal);
     }, 250);
     
     var close_modal = function() {
-      $('#projects-modal').css({'-webkit-transform': 'rotateY(180deg)'}).css(modal_beginning_position);
+      // $('#projects-modal').css({'-webkit-transform': 'rotateY(180deg)'}).css(modal_beginning_position);
+      $('#projects-modal').css({'-webkit-transform': 'rotateY(180deg)'});
       e.closest('li').removeClass('project-modal');
-      i.css({left: '', top: '', width: '', height: ''});
+      // i.css({left: '', top: '', width: '', height: ''});
       $('#projects-modal-overlay').fadeOut();
       _.delay(function() {
         $('#projects-modal').hide().removeClass('shown').css({'-webkit-transform': ''});
       }, 1000);
-    }
+    };
   }
-}
+};
 
 var projectCounter = 0;
 function ProjectModel(data, parent) {
+  var self = this;
+
   this.parent = parent;
-  
+
   this.id = ko.observable("projectThumbnail" + (++projectCounter));
   this.name = ko.observable(data.name || "");
   this.featured = ko.observable(data.featured || "");
-  this.description = ko.observable(data.description | "");
+  this.description = ko.observable(data.description || "");
+
   this.link = ko.observable(data.link || "");
+  this.target = (data.link && data.link.indexOf("http") > -1) ? '_blank' : '' ;
   this.screenshot = ko.observable('/images/screenshots/' + data.screenshot);
   this.tags = ko.observableArray(_.map(data.tags, function(t) {
     return new TagModel(t, parent);
   }));
-  
+
   this.visible = ko.dependentObservable(function() {
     var self = this;
     return _.all(this.parent.selectedTags(), function(tag) {
@@ -123,16 +129,15 @@ function ProjectModel(data, parent) {
     });
   }, this);
   
-  var self = this;
   this.hasTag = function(tag) {
     return _.any(self.tags(), function( t ) {
-    	return t.name() === tag.name();
+      return t.name() === tag.name();
     });
-  }
-  
+  };
+
   this.showModal = function(e) {
     self.parent.showModal(self, e.currentTarget);
-  }
+  };
 }
 
 function TagModel(name, parent) {
@@ -145,7 +150,7 @@ function TagModel(name, parent) {
   }, this);
   this.toggle = function() {
     parent.toggleTag(self);
-  }
+  };
 }
 
 
@@ -161,14 +166,14 @@ ko.bindingHandlers.morph = {
     window.setTimeout(function() {ko.bindingHandlers.morph._initializing = false;}, 500);
     // Initially set the element to be instantly visible/hidden depending on the value
     var value = valueAccessor();
-    $(element).toggle(ko.utils.unwrapObservable(value.show) == true); // Use "unwrapObservable" so we can handle values that may or may not be observable
+    $(element).toggle(ko.utils.unwrapObservable(value.show) === true); // Use "unwrapObservable" so we can handle values that may or may not be observable
   },
   update: function (element, valueAccessor) {
     // don't do the animation on page load
     if(!ko.bindingHandlers.morph._initializing) {
       // Get the connected element, in the case where there is more than one possibility
       function getConnected(selector) {
-        if(selector.search(/[a-zA-Z]/) == 0) selector = "#" + selector;
+        if(selector.search(/[a-zA-Z]/) === 0) selector = "#" + selector;
         var connected = $(selector);
         if( connected.length == 1 )
           return connected;
@@ -176,7 +181,7 @@ ko.bindingHandlers.morph = {
           var found = null;
           // find the element that's not hidden (and not this element)
           connected.each(function() {
-            if($(this).css('display') == '' || $(this).css('display') == 'block' && this != element) {
+            if($(this).css('display') === '' || $(this).css('display') == 'block' && this != element) {
               found = $(this);
               return false;
             }
@@ -188,7 +193,10 @@ ko.bindingHandlers.morph = {
       }
       
       var value = valueAccessor(),
-          e = $(element);
+          e = $(element),
+          wrap = e.wrap('<div>'),
+          connected,
+          newHeight;
       // unwrap all values
       _.each(value, function(v, key) {
         value[key] = ko.utils.unwrapObservable(v);
@@ -201,12 +209,11 @@ ko.bindingHandlers.morph = {
       });
       
       // Show the new element
-      if( value.show == true ) {
+      if( value.show === true ) {
         if($(element).css('display') == 'none') {
           e.show();
-          var connected = getConnected(value.connected),
-              newHeight = e.height(),
-              wrap = e.wrap('<div>');
+          connected = getConnected(value.connected);
+          newHeight = e.height();
           e.data('originalHeight', newHeight);
           wrap.css({ 'overflow-y': 'hidden', height: connected.height() + 'px', opacity: 0 });
           wrap.animate({ height: newHeight + 'px', opacity: 1 }, value.duration, value.easing, function() {
@@ -217,17 +224,16 @@ ko.bindingHandlers.morph = {
         }
       }
       // Hide the old element if it's shown
-      else if($(element).css('display') == '' || $(element).css('display') == 'block') {
-        var self = this,
-            wrap = e.wrap('<div>');
+      else if($(element).css('display') === '' || $(element).css('display') == 'block') {
+        var self = this;
         // Sometimes, this is called before the new element has a chance to appear, causing
         // the scroll position to get messed up while this element is positioned absolutely
         // and the new element is still hidden.
         var oldScrollTop = $(window).scrollTop();
         _.delay(function() { $(window).scrollTop(oldScrollTop); }, 10);
         wrap.css({ 'overflow-y': 'hidden', position: 'absolute', top: 0, left: 0, opacity: 1, width: e.width() });
-        var connected = getConnected.call(self, value.connected),
-            newHeight = connected.data('originalHeight') || connected.height();
+        connected = getConnected.call(self, value.connected);
+        newHeight = connected.data('originalHeight') || connected.height();
         e.show();
         wrap.animate({ height: newHeight + 'px', opacity: 0 }, value.duration-50, value.easing, function() {
           wrap.css({ 'overflow-y': '', height: '', width: '', opacity: '', position: '', top: '', left: '' });

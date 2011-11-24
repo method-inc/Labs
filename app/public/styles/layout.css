@@ -371,10 +371,6 @@ html {
 #background-container {
   display: none;
 }
-#main {
-  z-index: 2;
-  position: relative;
-}
 #header {
   margin-bottom: 2.5%;
 }
@@ -382,9 +378,9 @@ html {
 #main >section,
 #main >div {
   background: rgba(45,51,42,0.95);
-  padding: 2.5%;
   color: #fff;
   vertical-align: top;
+  padding: 2.5%;
 }
 #logo {
   margin: 0;
@@ -631,15 +627,26 @@ h1.page-title {
   padding: 5px;
 }
 #projects-modal {
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  left: 50%;
-  top: 10%;
+  position: fixed;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  left: 20%;
+  right: 20%;
+  top: 20%;
+  bottom: 20%;
   z-index: 120;
-  border: 5px solid #000;
-  background: rgba(0,0,0,0.90);
+  border: 1px solid #999;
+  padding: 35px;
+  background: rgba(0,0,0,0.95);
   display: none;
+  -webkit-box-shadow: 0 0 10px #fff;
+  -moz-box-shadow: 0 0 10px #fff;
+  -ms-box-shadow: 0 0 10px #fff;
+  -o-box-shadow: 0 0 10px #fff;
+  box-shadow: 0 0 10px #fff;
   -webkit-transform-style: preserves-3d;
   -moz-transform-style: preserves-3d;
   -ms-transform-style: preserves-3d;
@@ -650,6 +657,38 @@ h1.page-title {
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+}
+#projects-modal img {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #999;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+#projects-modal a.button {
+  background: #fff;
+  color: #333;
+  padding: 5px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #999;
+}
+#projects-modal a.closer {
+  background: url("/images/x.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  display:   *display: inline;;
+  z-index: 9999;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
 }
 #projects-modal.shown {
   -webkit-transition-property: all;
@@ -684,19 +723,34 @@ h1.page-title {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.20);
+  background: rgba(0,0,0,0.70);
   display: none;
   z-index: 11;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -ms-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
 }
 #demo_container {
-  margin: 10px auto;
+  margin: 0px -25px -25px;
   position: relative;
   background: #000;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
   padding: 5px;
   border: 1px solid #999;
   -webkit-box-shadow: 0 0 10px #000;
@@ -713,7 +767,7 @@ h1.page-title {
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: -1;
     overflow: hidden;
   }
   #background-container > img {

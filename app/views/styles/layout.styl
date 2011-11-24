@@ -39,20 +39,20 @@ body
   display none
 
 #main
-  z-index 2
-  position relative
+  //z-index 2
+  //position relative
 
 #header
-    margin-bottom 2.5%
+  margin-bottom 2.5%
 
 #main
   >header,
   >section,
   >div
     background rgba(45, 51, 42, 0.95)
-    padding 2.5%
     color #fff
     vertical-align top
+    padding 2.5%
 
 // @end base + layout
 
@@ -197,17 +197,41 @@ h1.page-title
     padding 5px
 
 #projects-modal
-  width 500px
-  height 500px
-  position absolute
-  left 50%
-  top 10%
+  position fixed
+  border-radius 5px
+  left 20%
+  right 20%
+  top 20%
+  bottom 20%
   z-index 120
-  border 5px solid #000
-  background rgba(0,0,0,0.9)
+  border 1px solid #999
+  padding 35px
+  background rgba(0,0,0,0.95)
   display none
+  box-shadow 0 0 10px #fff
   transform-style preserves-3d
   transform rotateY(180deg)
+  img
+    margin-right 20px
+    margin-bottom 20px
+    border 1px solid #999
+    border-radius 5px
+  a.button
+    background #fff
+    color #333
+    padding 5px 10px
+    border-radius 5px
+    border 1px solid #999
+  a.closer
+    background url("/images/x.png") no-repeat
+    width 30px
+    height 30px
+    display inline-block()
+    z-index 9999
+    position absolute
+    top -15px
+    right -15px
+    cursor pointer
   &.shown
     transition-property all
     transition-duration 0.75s
@@ -220,15 +244,18 @@ h1.page-title
   right 0
   top 0
   bottom 0
-  background rgba(0,0,0,0.2)
+  background rgba(0,0,0,0.7)
   display none
   z-index 11
+  transition-property all
+  transition-duration 0.5s
+  transition-timing-function ease-out
 
 #demo_container
-  margin 10px auto
+  margin 0px -25px -25px
   position relative
   background #000
-  border-radius 5px
+  border-radius 10px
   padding 5px
   border 1px solid #999
   box-shadow 0 0 10px #000
@@ -243,7 +270,7 @@ h1.page-title
     right 0
     top 0
     bottom 0
-    z-index 1
+    z-index -1
     overflow hidden
 
     > img
