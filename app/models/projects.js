@@ -25,7 +25,7 @@ Projects.prototype.find_all = function(callback) {
         featured: true,
         description: 'Easy sitemaps for civilized web architects. This is still in beta status, so some of the links aren\'t active yet. ',
         link: this.host+':3500', 
-        screenshot:'compass.jpg', 
+        screenshot:'compass.png', 
         tags:['html5', 'css3', 'svg']},
       { name: 'BarcampCLT Physics',
         featured: false,
