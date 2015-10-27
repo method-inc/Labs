@@ -1,0 +1,57 @@
+body {
+  font-family: Lato;
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  padding: 2em 12.5% 2em 12.5%;
+  background-color: rgba(56, 56, 56, 0.6);
+  margin-top: 0;
+  color: #FFF;
+}
+
+h1 span {
+  display: inline-block;
+  margin-left: 0.25em;
+  vertical-align: middle;
+  font-size: 2em;
+}
+
+.container {
+  max-width: 75%;
+  margin: auto;
+}
+
+#menu li {
+  display: inline-block;
+  margin-right: 2em;
+  font-size: 1.5em;
+}
+
+pre {
+  background-color: #FFF;
+  padding: 1.5em;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  width: 46%;
+  border-left: 1.5em solid #CCC;
+}
+
+canvas {
+  width: 46%;
+  margin-right: 1%;
+}
+
+.footer {
+  margin: 2em 0;
+  text-align: center;
+}
+
+a:hover {
+  color: #FFF;
+}

@@ -1,0 +1,79 @@
+extends ../layouts/default
+
+block vars
+  - pageTitle = 'Home'
+
+block content
+
+  link(rel='stylesheet', href='/static/css/canvastest.css')
+
+  #demo_container(role="main")
+    canvas#demo
+
+    div#controls
+      div#fps
+      form
+        h1 Clear method:
+        label clearRect on canvas
+          input(type='radio', name='clear', value='0', checked='checked')
+        label width = width
+          input(type="radio", name="clear", value="1")
+        label clearRect on sprites
+          input(type="radio", name="clear", value="2")
+
+        h1 Chrome width=width fix:
+        label off
+          input(type="radio", name="chromefix", value="0", checked="checked")
+        label on
+          input(type="radio", name="chromefix", value="1")
+
+        h1 Background:
+        label color
+          input(type="radio", name="bg", value="0", checked="checked")
+        label image
+          input(type="radio", name="bg", value="1")
+
+        h1 Sprite count:
+        label low (20)
+          input(type="radio", name="ballcount", value="20")
+        label medium (50)
+          input(type="radio", name="ballcount", value="50", checked="checked")
+        label high (250)
+          input(type="radio", name="ballcount", value="250")
+        label insane (1000)
+          input(type="radio", name="ballcount", value="1000")
+
+        h1 Force integers (~~):
+        label off
+          input(type="radio", name="integers", value="0", checked="checked")
+        label on
+          input(type="radio", name="integers", value="1")
+
+        h1 Canvas scaling:
+        label canvas pixels
+          input(type="radio", name="scaling", value="0", checked="checked")
+        label css pixels
+          input(type="radio", name="scaling", value="1")
+
+        h1 Fillstyle:
+        label rgba alpha .33
+          input(type="radio", name="fillstyle", value="0")
+        label solid
+          input(type="radio", name="fillstyle", value="1", checked="checked")
+
+        h1 Rotation:
+        label automatic
+          input(type="radio", name="rotation", value="0", checked="checked")
+        label mouse X
+          input(type="radio", name="rotation", value="1")
+
+        h1 Scale transform:
+        label locked
+          input(type="radio", name="scaletransform", value="0", checked="checked")
+        label mouse Y
+          input(type="radio", name="scaletransform", value="1")
+
+        a(href="mailto:hunter@skookum.com") Hunter@Skookum.com
+
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
+  script(src='/static/js/canvastest.js')

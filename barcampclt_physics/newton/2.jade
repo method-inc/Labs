@@ -1,0 +1,81 @@
+extends ../../layouts/default
+
+block vars
+  - pageTitle = 'Acceleration'
+
+block content
+  ul#menu
+    li
+      a(href='/') Home
+    li
+      a(href='1.html') Previous
+    li
+      a(href='3.html') Next
+
+  canvas#surface(width='600', height='400')
+  pre
+    code#source
+      | var ball = {
+      |   x: 300,
+      |   y: 200,
+      |   r: 15,
+      |   vx: 0,
+      |   vy: 0
+      | };
+      | 
+      | // ...
+      | 
+      | ball.x += ball.vx;
+      | ball.y += ball.vy;
+      | 
+      | ball.vx *= .99;
+      | ball.vy *= .99;
+      | ball.vy += .25;
+
+  script.
+    // Version 2 - Acceleration
+
+    var ball = {
+      x: 300,
+      y: 200,
+      r: 15,
+      vx: 0,
+      vy: 0
+    };
+
+    var canvas = document.getElementById("surface");
+    var ctx = canvas.getContext('2d');
+
+    setInterval(function() {
+
+      // Clear display
+      ctx.save();
+        ctx.fillStyle = "rgba(0, 0, 0, .3)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+
+      // Update ball (with Physics! =)
+
+      // 1 - apply velocity to position (vx -> x)
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+
+      // 2 - apply drag/friction to velocity
+      ball.vx *= .99;
+      ball.vy *= .99;
+
+      // 3 - apply gravity to velocity
+      ball.vy += .25;
+
+
+      // Draw ball
+      ctx.save();
+        ctx.translate(ball.x, ball.y);
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        ctx.arc(0, 0, ball.r, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
+      ctx.restore();
+
+    }, 1000 / 77);

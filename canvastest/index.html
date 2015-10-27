@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <!-- main styles-->
+    <link href="/static/css/layout.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,900,300&amp;amp;subset=latin" rel="stylesheet" media="all">
+  </head>
+  <body>
+    <h1> <a href="/"> <img src="http://skookum.com/public/images/wordmark.svg"><span>Labs</span></a></h1>
+    <div class="container">
+      <link rel="stylesheet" href="/static/css/canvastest.css">
+      <div id="demo_container" role="main">
+        <canvas id="demo"></canvas>
+        <div id="controls">
+          <div id="fps"></div>
+          <form>
+            <h1>Clear method:</h1>
+            <label>clearRect on canvas
+              <input type="radio" name="clear" value="0" checked="checked">
+            </label>
+            <label>width = width
+              <input type="radio" name="clear" value="1">
+            </label>
+            <label>clearRect on sprites
+              <input type="radio" name="clear" value="2">
+            </label>
+            <h1>Chrome width=width fix:</h1>
+            <label>off
+              <input type="radio" name="chromefix" value="0" checked="checked">
+            </label>
+            <label>on
+              <input type="radio" name="chromefix" value="1">
+            </label>
+            <h1>Background:</h1>
+            <label>color
+              <input type="radio" name="bg" value="0" checked="checked">
+            </label>
+            <label>image
+              <input type="radio" name="bg" value="1">
+            </label>
+            <h1>Sprite count:</h1>
+            <label>low (20)
+              <input type="radio" name="ballcount" value="20">
+            </label>
+            <label>medium (50)
+              <input type="radio" name="ballcount" value="50" checked="checked">
+            </label>
+            <label>high (250)
+              <input type="radio" name="ballcount" value="250">
+            </label>
+            <label>insane (1000)
+              <input type="radio" name="ballcount" value="1000">
+            </label>
+            <h1>Force integers (~~):</h1>
+            <label>off
+              <input type="radio" name="integers" value="0" checked="checked">
+            </label>
+            <label>on
+              <input type="radio" name="integers" value="1">
+            </label>
+            <h1>Canvas scaling:</h1>
+            <label>canvas pixels
+              <input type="radio" name="scaling" value="0" checked="checked">
+            </label>
+            <label>css pixels
+              <input type="radio" name="scaling" value="1">
+            </label>
+            <h1>Fillstyle:</h1>
+            <label>rgba alpha .33
+              <input type="radio" name="fillstyle" value="0">
+            </label>
+            <label>solid
+              <input type="radio" name="fillstyle" value="1" checked="checked">
+            </label>
+            <h1>Rotation:</h1>
+            <label>automatic
+              <input type="radio" name="rotation" value="0" checked="checked">
+            </label>
+            <label>mouse X
+              <input type="radio" name="rotation" value="1">
+            </label>
+            <h1>Scale transform:</h1>
+            <label>locked
+              <input type="radio" name="scaletransform" value="0" checked="checked">
+            </label>
+            <label>mouse Y
+              <input type="radio" name="scaletransform" value="1">
+            </label><a href="mailto:hunter@skookum.com">Hunter@Skookum.com</a>
+          </form>
+        </div>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+      <script src="/static/js/canvastest.js"></script>
+    </div>
+    <div class="footer"></div>
+    <script></script>
+    <!-- google analytics code, etc...-->
+  </body>
+</html>

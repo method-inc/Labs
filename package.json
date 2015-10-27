@@ -1,0 +1,25 @@
+{
+  "name": "labs",
+  "version": "1.0.0",
+  "description": "Skookum Labs Experiments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skookum/Labs.git"
+  },
+  "author": "Skookum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skookum/Labs/issues"
+  },
+  "homepage": "https://github.com/Skookum/Labs#readme",
+  "devDependencies": {
+    "connect": "^3.4.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jade-tasks": "0.0.0"
+  }
+}

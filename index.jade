@@ -1,0 +1,50 @@
+extends layouts/default
+
+block vars
+  - pageTitle = 'Home'
+
+block content
+  hgroup(role="heading")
+    h2 Physics for Lazy Game Developers
+    h2 Barcamp Charlotte 2010
+  section(role="main")
+    p Welcome redditors and ...twitter...ers! This is me 
+      a(href="http://twitter.com/hunterloftis") on twitter
+      |  and 
+      a(href="http://www.reddit.com/user/strixvarius/") on reddit
+      |. I work
+      a(href="http://skookum.com") here
+      |  building web apps. Glad some people have found this useful!
+
+    div#lists
+      img#diagram.right(src="/static/img/diagram.png")
+      h2 Newton
+      ol
+        li
+          a(href='/barcampclt_physics/newton/0.html') Position
+        li
+          a(href='/barcampclt_physics/newton/1.html') Velocity
+        li
+          a(href='/barcampclt_physics/newton/2.html') Acceleration
+        li
+          a(href='/barcampclt_physics/newton/3.html') Collisions (elastic)
+        li
+          a(href='/barcampclt_physics/newton/4.html') Collisions (mostly elastic)
+
+      h2 Euclid
+      ol
+        li
+          a(href='/barcampclt_physics/euclid/0.html') Rotation (known angle)
+        li
+          a(href='/barcampclt_physics/euclid/1.html') Rotation (unknown angle)
+        li
+          a(href='/barcampclt_physics/euclid/2.html') Rotation (triangle overlay)
+        li
+          a(href='/barcampclt_physics/euclid/3.html') Rotation + particles
+
+      h2 Complex
+      ul
+        li
+          a(href='/canvastest') Canvas Test
+
+      br.clear
