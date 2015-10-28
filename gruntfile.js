@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       },
       jade: {
         tasks: ["jade:debug"],
-        files: ["**/*.jade", "**/*.md", "!layouts/*.jade"]
+        files: ["**/*.jade", "**/*.md", "layouts/*.jade"]
       }
     },
     jade: {

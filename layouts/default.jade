@@ -4,8 +4,8 @@ html
   head
     title #{pageTitle}
     // main styles
-    link(href="static/css/layout.css", rel="stylesheet")
-    link(href="static/css/styles.css", rel="stylesheet")
+    link(href="/static/css/layout.css", rel="stylesheet")
+    link(href="/static/css/styles.css", rel="stylesheet")
     link(href="http://fonts.googleapis.com/css?family=Lato:400,900,300&amp;subset=latin", rel="stylesheet", media="all")
     block styles
   body
@@ -16,6 +16,9 @@ html
     .container
       block content
     .footer
+      p built by 
+        a(href="http://skookum.com")
+          img(src="http://skookum.com/public/images/wordmark.svg")
     block scripts
     block analytics
       script.

@@ -50,6 +50,12 @@ canvas {
 .footer {
   margin: 2em 0;
   text-align: center;
+  font-size: 1.5em;
+}
+
+.footer img {
+  height: 0.8125em;
+  vertical-align: baseline;
 }
 
 a:hover {
